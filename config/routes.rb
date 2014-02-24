@@ -4,7 +4,7 @@ ExpenseTracker::Application.routes.draw do
   devise_for :users 
 
   resources :users, {shallow: true} do
-  	resources :groups
+  	resources :groups, only: [:new, :create, :destroy]
   end
   
   resources :groups, {shallow: true} do
@@ -18,6 +18,8 @@ ExpenseTracker::Application.routes.draw do
   get ':action', to: 'pages#action'  
 
 
+  root to: "welcome#index"
+  match "/groups/:id/adduser" => "groups#adduser", as: 'adduser', via: :post
   root to: "pages#index"
 
 end

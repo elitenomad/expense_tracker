@@ -4,7 +4,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    @groups = Group.all
+    #@groups = Group.all
+    @groups = current_user.mygroups
   end
 
   # GET /groups/1
@@ -23,9 +24,30 @@ class GroupsController < ApplicationController
 
   end
 
+  # Add users to groups
+  def adduser
+    @group = Group.find(params[:id])
+    # validate if user is present
+    # Two conditions arise
+    # User in the database. he will be just added to the group
+    # User not in the database. If this is the case we need to
+    # figure a way out to adjust user in a group
+    user_count = User.where(email: params[:emailid]).count
+    if(user_count >= 1)
+      user = User.find_by(email: params[:emailid])
+      @group.users << user
+      redirect_to action: 'show'
+    else
+        # Need to perform another logic
+        fail
+    end
+    
+  end
+
   # GET /groups/new
   def new
-    @group = Group.new
+    # @group = Group.new
+    @group = current_user.mygroups.new
     @owner = current_user
   end
 
@@ -36,10 +58,11 @@ class GroupsController < ApplicationController
   # POST /groups
   # POST /groups.json
   def create
-    @group = Group.new(group_params)
+    @group = current_user.mygroups.new(group_params)
 
     respond_to do |format|
       if @group.save
+        current_user.groups << @group
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else
