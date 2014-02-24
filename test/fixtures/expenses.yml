@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  amount: 1
+  group_id: 
+  user_id: 
+
+two:
+  description: MyText
+  amount: 1
+  group_id: 
+  user_id: 
