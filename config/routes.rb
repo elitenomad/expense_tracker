@@ -16,7 +16,8 @@ ExpenseTracker::Application.routes.draw do
   end
 
   
+  get ':action', to: 'pages#action'  
 
-  root to: "welcome#index"
+  root to: "pages#index"
 
 end

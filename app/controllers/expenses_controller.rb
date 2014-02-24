@@ -1,6 +1,6 @@
 class ExpensesController < ApplicationController
-  include portions_helper
-
+  include PortionsHelper  
+  
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   
   after_action :generate_potions, only: [:create, :update]

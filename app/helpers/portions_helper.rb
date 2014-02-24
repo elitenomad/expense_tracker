@@ -4,7 +4,7 @@ def self.generate_portion(exp)
   sharing_users  = exp.group.users
   portion_amount = exp.amount / sharing_users.count
   sharing_users.each do |user|
-    portion = exp.portions.new (expense_id: exp.id, payee_id: user.id, amount: portion_amount)
+    portion = exp.portions.new(expense_id: exp.id, payee_id: user.id, amount: portion_amount)
     portion.save
   end
 end
