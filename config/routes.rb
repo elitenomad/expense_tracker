@@ -1,13 +1,21 @@
 ExpenseTracker::Application.routes.draw do
 
-  resources :portions
 
-  devise_for :users
+  devise_for :users 
+
+  resources :users, {shallow: true} do
+  	resources :groups
+  end
   
+  resources :groups, {shallow: true} do
+  	resources :expenses
+  end
 
-  resources :expenses
+  resources :expenses, {shallow: true} do
+  	resources :portions
+  end
 
-  resources :groups
+  
 
   root to: "welcome#index"
 
