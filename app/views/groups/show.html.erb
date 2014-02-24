@@ -10,6 +10,15 @@
   <%= @group.owner.name %>
 </p>
 
+<p>
+  <strong>Your Expenses:</strong>
+  <% @portions.each do |portion| %>
+  <p><%= portion.expense.name %></p>
+  <p>Cost: <%= portion.expense.amount %></p>
+  <p>You owe: <%= portion.amount %></p>
+  <% end %>
+  <p>You owe in total <%= @amount_owing %></p>
+</p>
 
 
 
