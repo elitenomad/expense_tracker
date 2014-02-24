@@ -17,6 +17,6 @@ ExpenseTracker::Application.routes.draw do
 
   
 
-  root to: "welcome#index"
+  root to: "groups#index"
 
 end
