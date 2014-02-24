@@ -6,7 +6,12 @@ gem 'rails', '4.0.2'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+# Use bootstrap sass gem for styling
 gem 'bootstrap-sass'
+
+# Use devise for authentication
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
