@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224022948) do
+ActiveRecord::Schema.define(version: 20140224031917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20140224022948) do
   create_table "groups", force: true do |t|
     t.string   "name"
     t.integer  "owner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_users", id: false, force: true do |t|
+    t.integer "user_id",  null: false
+    t.integer "group_id", null: false
+  end
+
+  add_index "groups_users", ["group_id", "user_id"], name: "index_groups_users_on_group_id_and_user_id", using: :btree
+  add_index "groups_users", ["user_id", "group_id"], name: "index_groups_users_on_user_id_and_group_id", using: :btree
+
+  create_table "portions", force: true do |t|
+    t.decimal  "amount"
+    t.integer  "expenses_id"
+    t.integer  "payee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @portion.amount %>
+</p>
+
+<p>
+  <strong>Expenses:</strong>
+  <%= @portion.expenses_id %>
+</p>
+
+<p>
+  <strong>Payee:</strong>
+  <%= @portion.payee_id %>
+</p>
+
+<%= link_to 'Edit', edit_portion_path(@portion) %> |
+<%= link_to 'Back', portions_path %>

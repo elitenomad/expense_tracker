@@ -1,0 +1,31 @@
+<h1>Listing portions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Expenses</th>
+      <th>Payee</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @portions.each do |portion| %>
+      <tr>
+        <td><%= portion.amount %></td>
+        <td><%= portion.expenses_id %></td>
+        <td><%= portion.payee_id %></td>
+        <td><%= link_to 'Show', portion %></td>
+        <td><%= link_to 'Edit', edit_portion_path(portion) %></td>
+        <td><%= link_to 'Destroy', portion, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Portion', new_portion_path %>

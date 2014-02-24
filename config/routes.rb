@@ -1,5 +1,7 @@
 ExpenseTracker::Application.routes.draw do
 
+  resources :portions
+
   devise_for :users
   
 
