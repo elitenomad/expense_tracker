@@ -3,11 +3,6 @@
   <%= @group.name %>
 </p>
 
-<!-- <p>
-  <strong>Owner:</strong>
-  <%= @group.owner_id %>
-</p> -->
-
 <div class="row">
   <div class="col-md-6">
   <%= form_for @group, url: adduser_path(@group), method: :post do |f| %>
@@ -25,6 +20,20 @@
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 </div><!-- /.row -->
+  <%= @group.owner.name %>
+</p>
+
+<p>
+  <strong>Your Expenses:</strong>
+  <% @portions.each do |portion| %>
+  <p><%= portion.expense.name %></p>
+  <p>Cost: <%= portion.expense.amount %></p>
+  <p>You owe: <%= portion.amount %></p>
+  <% end %>
+  <p>You owe in total <%= @amount_owing %></p>
+</p>
+
+
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>

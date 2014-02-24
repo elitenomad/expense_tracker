@@ -11,6 +11,17 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @expenses = @group.expenses
+    @portions = current_user.portions
+    @users = @group.users
+    @amount_owing = []
+    # push all the portion amounts in to an array
+    @portions.each do |portion|
+      @amount_owing << portion.amount
+    end
+    # this adds up all the values in the array
+    @amount_owing = @amount_owing.reduce(:+)
+
   end
 
   # Add users to groups
@@ -37,6 +48,7 @@ class GroupsController < ApplicationController
   def new
     # @group = Group.new
     @group = current_user.mygroups.new
+    @owner = current_user
   end
 
   # GET /groups/1/edit
