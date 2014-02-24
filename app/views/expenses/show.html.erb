@@ -12,13 +12,14 @@
 
 <p>
   <strong>Group:</strong>
-  <%= @expense.group %>
+  <%= link_to @expense.group.name, group_path(@expense.group) %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @expense.user %>
+  <strong>Payer:</strong>
+  <%= @payer.email %>
+	
 </p>
 
-<%= link_to 'Edit', edit_expense_path(@expense) %> |
-<%= link_to 'Back', expenses_path %>
+<%= link_to 'Edit', edit_expense_path %> |
+<%= link_to 'Back', group_expenses_path(@expense.group) %>

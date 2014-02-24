@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-user1 = User.create(name: "Barry")
+user1 = User.create(name: "Barry", email: "barry@email.com")
