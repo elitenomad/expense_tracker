@@ -14,7 +14,7 @@ ExpenseTracker::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -29,4 +29,16 @@ ExpenseTracker::Application.configure do
 
   # Devise mail configuration for the localhost
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_options = {from: 'stalin.pranava@gmail.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'localhost',
+    user_name:            'stalin.pranava@gmail.com',
+    password:             '!workinIBM',
+    authentication:       'plain',
+    enable_starttls_auto: true 
+   }
 end

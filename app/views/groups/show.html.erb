@@ -1,14 +1,30 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @group.name %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Owner:</strong>
   <%= @group.owner_id %>
-</p>
+</p> -->
+
+<div class="row">
+  <div class="col-md-6">
+  <%= form_for @group, url: adduser_path(@group), method: :post do |f| %>
+    <div class="input-group">
+      
+
+      <%= email_field_tag :emailid , nil, {class:"form-control"} %>
+      <div class="input-group-btn">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add User <span class="caret"></span></button>
+        <ul class="dropdown-menu pull-right">
+          <%= f.submit 'Add User to Group', class:'btn btn-primary' %>
+        </ul>
+        <% end %>
+      </div><!-- /btn-group -->
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+</div><!-- /.row -->
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
