@@ -15,7 +15,6 @@ ExpenseTracker::Application.routes.draw do
   	resources :portions
   end
 
-  
   get ':action', to: 'pages#action'  
 
   root to: "pages#index"

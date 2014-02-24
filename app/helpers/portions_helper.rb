@@ -9,10 +9,12 @@ def self.generate_portion(exp)
   end
 end
 
+
+
 def calculate_percentage_portion_per_user(exp)
   sharing_users = exp.group.users
-  portion100 = 1 / sharing_users.count # portion in % of the expense
-  # TODO create an array of users and portion100. array of hashes?
+  # TODO create an array of hash with user and portion(percentage or numeric ?)
+  # then in generate portion call this function to calculate each user portion befrore creating portions
 end
 
 end
