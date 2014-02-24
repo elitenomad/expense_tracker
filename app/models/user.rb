@@ -4,7 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :portions
+  has_many :portions, foreign_key: :payee_id
+
   has_many :expenses
-  has_many :groups, source: :owner
+
+  has_many :mygroups, foreign_key: :owner_id, class_name: 'Group'
+  
+  has_and_belongs_to_many :groups
 end
