@@ -12,6 +12,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/1
   # GET /expenses/1.json
   def show
+    @payer = User.find_by_id(@expense.user_id)
   end
 
   # GET /expenses/new
