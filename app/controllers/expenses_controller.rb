@@ -5,6 +5,8 @@ class ExpensesController < ApplicationController
   # GET /expenses.json
   def index
     @expenses = Expense.all
+    @group = Group.find(params[:group_id])
+
   end
 
   # GET /expenses/1
@@ -15,6 +17,8 @@ class ExpensesController < ApplicationController
   # GET /expenses/new
   def new
     @expense = Expense.new
+    @payer = current_user
+    @group = Group.find(params[:group_id])
   end
 
   # GET /expenses/1/edit
