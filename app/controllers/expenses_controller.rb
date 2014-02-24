@@ -12,7 +12,7 @@ class ExpensesController < ApplicationController
   # GET /expenses/1
   # GET /expenses/1.json
   def show
-    @payer = User.find_by_id(@expense.user_id)
+    @payer = @expense.payer
   end
 
   # GET /expenses/new
@@ -24,6 +24,8 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/1/edit
   def edit
+    @group = @expense.group
+    @payer = @expense.payer
   end
 
   # POST /expenses
@@ -59,9 +61,10 @@ class ExpensesController < ApplicationController
   # DELETE /expenses/1
   # DELETE /expenses/1.json
   def destroy
+    @group = @expense.group
     @expense.destroy
     respond_to do |format|
-      format.html { redirect_to expenses_url }
+      format.html { redirect_to group_expenses_url(@group) }
       format.json { head :no_content }
     end
   end
