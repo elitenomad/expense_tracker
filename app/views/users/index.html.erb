@@ -27,7 +27,7 @@
 		    <tr>
 		    	<td><%= user.email %></td>
 		    	<td><%= user.name %></td>
-		    	<td><%= link_to "Add User", adduser_path(@group, emailid: user.email), method: :post%></td>
+		    	<td><%= link_to "Add User", memberships_path(group_id: @group.id, emailid: user.email), method: :post %></td>
 		    	<td></td>
 		    </tr>
 		  <% end %>
