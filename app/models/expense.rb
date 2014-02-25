@@ -6,6 +6,6 @@ class Expense < ActiveRecord::Base
   has_many :portions, dependent: :destroy
 
   validates :description, presence: true
-  validates :amount, presence: true, numericality: true
+  validates :amount, presence: true, numericality: {greater_than: 0}
 
 end
