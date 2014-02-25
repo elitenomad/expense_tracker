@@ -8,8 +8,14 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
-    @group = Group.find(params[:group_id])
-    @expenses = @group.expenses
+    @groups = current_user.groups
+    @all_expenses = []
+    @groups.each do |group|
+      group.expenses.each do |expense|
+        @all_expenses << expense
+      end
+    end
+
   end
 
   # GET /expenses/1

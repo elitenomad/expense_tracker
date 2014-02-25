@@ -1,25 +1,30 @@
 <div id="expense-list">
 
-
+<h3>You are currrently owed/owe $XX</h3>
 	<table class="table table-hover">
 		
 		<thead>
 			<th>Description</th>
-			<th>Amount</th>
+			<th>Cost</th>
+			<th>Your Share</th>
+			<th>Group</th>
 		</thead>
 
 		
 		<tbody>	
-			<% @expenses.each do |expense| %>
-				
-					<tr data-link="<%= expense_path(expense) %>">
-						<td><%= expense.description %></td>
-						<td><%= number_to_currency(expense.amount) %></td>
-					</tr>
-				
+			<% @all_expenses.each do |expense| %>
+				<tr data-link="<%= expense_path(expense) %>">
+					<td><%= expense.description %></td>
+					<td><%= number_to_currency(expense.amount) %></td>
+					<td>put current users portion here</td>
+					<td><%= expense.group.name %></td>
+
+				</tr>
 			<% end %>
 
 		</tbody>
+
+
 	</table>
 
 
