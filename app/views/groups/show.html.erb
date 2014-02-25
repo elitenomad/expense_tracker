@@ -1,14 +1,14 @@
-<p>
-  <strong>Name:</strong>
+<h1>
+  
   <%= @group.name %>
-</p>
+</h1>
 
 <div class="row">
   <div class="col-md-8">
  
   </div>
   <div class="col-md-4">
-    <%= link_to "List Users", groupuser_path(@group), class:'btn btn-default' %>
+    <%= link_to "Manage Group Members", groupuser_path(@group), class:'btn btn-default' %>
     <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>
   </div>
 </div>
@@ -16,23 +16,24 @@
 
 
 <div class="row">
+  <h3>Overview</h3>
   <div class="col-md-6">
     <table class="table table-bordered table-striped">
           <tr>
-            <th>User</th>
-            <th>Amount</th>
+            <th>Group Members</th>
+            <th>Amount Owing</th>
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
             <td><%=  user %></td>
-            <td><%=  amount %></td>
+            <td><%=  number_to_currency(amount) %></td>
           </tr>
         <% end %>
     </table>
+  </div>
 </div>
-</div>
+
+<%= render "expenses/expense" %>
 
 
 
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

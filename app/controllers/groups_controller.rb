@@ -11,17 +11,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
-    @expenses = @group.expenses
-    @portions = current_user.portions
     @users = @group.users
-    @amount_owing = []
-    # push all the portion amounts in to an array
-    @portions.each do |portion|
-      @amount_owing << portion.amount
-    end
-    # this adds up all the values in the array
-    @amount_owing = @amount_owing.reduce(:+)
-
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
@@ -31,9 +21,15 @@ class GroupsController < ApplicationController
       portions.each do |portion|
         amount_owed += portion.amount
       end
-      @user_portions_hash[user.email]=amount_owed
+      @user_portions_hash[user.name]=amount_owed
+      # why is amount owed set back to 0?
       amount_owed = 0
     end
+
+    # below is to get all the data for the expense list partial
+    # get all the expenses for the current group
+    # list in table, expense description, expense amount and link to details page
+    @expenses = @group.expenses
 
   end
 
