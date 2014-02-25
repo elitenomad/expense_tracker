@@ -4,34 +4,34 @@
 </p>
 
 <div class="row">
+  <div class="col-md-8">
+ 
+  </div>
+  <div class="col-md-4">
+    <%= link_to "List Users", groupuser_path(@group), class:'btn btn-default' %>
+    <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>
+  </div>
+</div>
+
+
+
+<div class="row">
   <div class="col-md-6">
-  <%= form_for @group, url: adduser_path(@group), method: :post do |f| %>
-    <div class="input-group">
-      
-
-      <%= email_field_tag :emailid , nil, {class:"form-control"} %>
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Add User <span class="caret"></span></button>
-        <ul class="dropdown-menu pull-right">
-          <%= f.submit 'Add User to Group', class:'btn btn-primary' %>
-        </ul>
+    <table class="table table-bordered table-striped">
+          <tr>
+            <th>User</th>
+            <th>Amount</th>
+          </tr>
+          <% @user_portions_hash.each do |user,amount| %>
+          <tr>
+            <td><%=  user %></td>
+            <td><%=  amount %></td>
+          </tr>
         <% end %>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-  <%= @group.owner.name %>
-</p>
+    </table>
+</div>
+</div>
 
-<p>
-  <strong>Your Expenses:</strong>
-  <% @portions.each do |portion| %>
-  <p><%= portion.expense.name %></p>
-  <p>Cost: <%= portion.expense.amount %></p>
-  <p>You owe: <%= portion.amount %></p>
-  <% end %>
-  <p>You owe in total <%= @amount_owing %></p>
-</p>
 
 
 
