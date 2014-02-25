@@ -1,25 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @expense.description %>
-</p>
+<div class='container'>
 
-<p>
-  <strong>Amount:</strong>
-  <%= @expense.amount %>
-</p>
+<div class="row">
+  <div class="col-md-4">
+  <%= render "expense_detail" %>
+  </div>
+</div>
 
-<p>
-  <strong>Group:</strong>
-  <%= link_to @expense.group.name, group_path(@expense.group) %>
-</p>
+</div>
 
-<p>
-  <strong>Payer:</strong>
-  <%= @payer.name %>
-	
-</p>
+
 
 <%= link_to 'Edit', edit_expense_path %> |
 <%= link_to 'Back', group_expenses_path(@expense.group) %>
