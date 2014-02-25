@@ -77,7 +77,7 @@ class ExpensesController < ApplicationController
   private
 
     def generate_portions
-      portions_helper.generate_portion(@expense)
+      PortionsHelper.generate_portion(@expense)
     end
 
     # Use callbacks to share common setup or constraints between actions.

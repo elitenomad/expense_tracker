@@ -50,3 +50,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# gem for debugging
+gem 'pry'
+gem 'pry-debugger'
