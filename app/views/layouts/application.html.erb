@@ -7,35 +7,57 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to "My Expenses", "#" %></li>
+        <li><%= link_to "My Groups", groups_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+  				<div class="container">
+  					
+						<% if user_signed_in? %>
+						  Logged in as <strong><%= current_user.email %></strong>.
+						  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+						  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+						<% else %>
+						  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+						  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+						<% end %>
+					</div>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<p class="navbar-text pull-right">
-				<% if user_signed_in? %>
-				  Logged in as <strong><%= current_user.email %></strong>.
-				  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-				  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-				<% else %>
-				  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-				  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-				<% end %>
-
-			</div>
-		</div>
 	
-		<div class="row">
-			<p>
-				<% if notice %>
-				  <p class="alert alert-notice well"><%= notice %></p>
-				<% end %>
-				<% if alert %>
-				  <p class="alert alert-error well"><%= alert %></p>
-				<% end %>
-			</p>
-		</div>
+				<div class="row">
+					<p>
+						<% if notice %>
+						  <p class="alert alert-notice well"><%= notice %></p>
+						<% end %>
+						<% if alert %>
+						  <p class="alert alert-error well"><%= alert %></p>
+						<% end %>
+					</p>
+				</div>
 
-	
 		<div class="row">
 			<%= yield %>
 		</div>
