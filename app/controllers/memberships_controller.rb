@@ -13,7 +13,7 @@ def create
       user = User.find_by(email: params[:emailid])
       if (group_users_count == 0)
         @group.users << user
-        redirect_to action: 'show'
+        redirect_to 'groups_path'
       else
         redirect_to groupuser_path(@group), alert: "User is already added to group"
       end
