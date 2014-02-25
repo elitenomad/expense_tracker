@@ -18,7 +18,7 @@ ExpenseTracker::Application.routes.draw do
   get ':action', to: 'pages#action'  
 
 
-  root to: "welcome#index"
+  
   match "/groups/:id/adduser" => "groups#adduser", as: 'adduser', via: :post
   root to: "pages#index"
 

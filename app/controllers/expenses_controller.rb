@@ -3,13 +3,14 @@ class ExpensesController < ApplicationController
   
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   
-  after_action :generate_potions, only: [:create, :update]
+  after_action :generate_portions, only: [:create, :update]
 
   # GET /expenses
   # GET /expenses.json
   def index
-    @expenses = Expense.all
     @group = Group.find(params[:group_id])
+    @expenses = @group.expenses
+    
 
   end
 
