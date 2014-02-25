@@ -1,29 +1,31 @@
-<h1>Listing groups</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Owner</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @groups.each do |group| %>
+<h1>My Groups</h1>
+<div class="row">
+  <%= link_to 'Add a new Group', new_group_path %>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-bordered table-hover">
       <tr>
-        <td><%= group.name %></td>
-        <td><%= group.owner_id %></td>
-        <td><%= link_to 'Show', group %></td>
-        <td><%= link_to 'Edit', edit_group_path(group) %></td>
-        <td><%= link_to 'Destroy', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th></th>
+        <th>Name</th>
+        <th>Owner</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Group', new_group_path %>
+      <% @groups.each do |group| %>
+        <tr>
+          <td>
+            <% if current_user === group.owner %>
+              <%= image_tag("Very-Basic-Settings-icon.png") %>
+            <% end %>
+          </td>
+          <td> <%= group.name %> </td>
+          <td> <%= group.owner.name %> </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+
+
