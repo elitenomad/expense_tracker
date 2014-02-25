@@ -9,9 +9,7 @@ class ExpensesController < ApplicationController
   # GET /expenses.json
   def index
     @group = Group.find(params[:group_id])
-
     @expenses = @group.expenses
-
   end
 
   # GET /expenses/1
