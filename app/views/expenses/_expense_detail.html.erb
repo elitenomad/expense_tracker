@@ -1,0 +1,19 @@
+<h2><%= @expense.description %>  $ <%= @expense.amount %></h2>
+
+<p>paid by : <%= @expense.payer.name %></p>
+<p>created at : <%= @expense.created_at %></p>
+
+<table class="table">
+  <tr>
+    <th>user</th>
+    <th>portion</th>
+  </tr> 
+  <% @group.users.each do |user| %>
+    <% portion = @expense.portions.find_by_payee_id user.id%>
+    <tr>
+      <td><%= user.name %></td>
+      <td>$ <%= portion.amount.to_s %></td>
+    </tr>
+  <% end %>                          
+  
+</table>
