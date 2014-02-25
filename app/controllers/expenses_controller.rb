@@ -8,8 +8,11 @@ class ExpensesController < ApplicationController
   # GET /expenses
   # GET /expenses.json
   def index
+    # this gets all the groups the current user is a member of
     @groups = current_user.groups
+    # array to hold all the expenses
     @all_expenses = []
+    # iterate through each group and then sum up all expenses
     @groups.each do |group|
       group.expenses.each do |expense|
         @all_expenses << expense

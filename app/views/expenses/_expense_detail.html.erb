@@ -5,8 +5,8 @@
 
 <table class="table">
   <tr>
-    <th>user</th>
-    <th>portion</th>
+    <th>Group Member</th>
+    <th>Your Share</th>
   </tr> 
   <% @group.users.each do |user| %>
     <% portion = @expense.portions.find_by_payee_id user.id%>
