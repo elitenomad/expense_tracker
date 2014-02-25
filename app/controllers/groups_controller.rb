@@ -32,6 +32,7 @@ class GroupsController < ApplicationController
         amount_owed += portion.amount
       end
       @user_portions_hash[user.email]=amount_owed
+      amount_owed = 0
     end
 
   end
