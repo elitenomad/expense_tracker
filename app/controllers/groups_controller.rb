@@ -22,6 +22,18 @@ class GroupsController < ApplicationController
     # this adds up all the values in the array
     @amount_owing = @amount_owing.reduce(:+)
 
+    # Need to create Users and loop through
+    # their respective portions and create a owing amount
+    @user_portions_hash = {}
+    amount_owed = 0
+    @users.each do |user|
+      portions = user.portions
+      portions.each do |portion|
+        amount_owed += portion.amount
+      end
+      @user_portions_hash[user.email]=amount_owed
+    end
+
   end
 
   # Add users to groups
@@ -33,10 +45,15 @@ class GroupsController < ApplicationController
     # User not in the database. If this is the case we need to
     # figure a way out to adjust user in a group
     user_count = User.where(email: params[:emailid]).count
+    group_users_count = @group.users.where(email: params[:emailid]).count
     if(user_count >= 1)
       user = User.find_by(email: params[:emailid])
-      @group.users << user
-      redirect_to action: 'show'
+      if (group_users_count == 0)
+        @group.users << user
+        redirect_to action: 'show'
+      else
+        redirect_to groupuser_path(@group), alert: "User is already added to group"
+      end
     else
         # Need to perform another logic
         fail
