@@ -10,14 +10,13 @@ class ExpensesController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
     @expenses = @group.expenses
-    
-
   end
 
   # GET /expenses/1
   # GET /expenses/1.json
   def show
     @payer = @expense.payer
+    @group = Group.find_by_id @expense.group_id
   end
 
   # GET /expenses/new
