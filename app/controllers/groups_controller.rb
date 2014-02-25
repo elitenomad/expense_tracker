@@ -15,16 +15,28 @@ class GroupsController < ApplicationController
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
-    amount_owed = 0
+    # amount_owed = 0
+    # @users.each do |user|
+    #   portions = user.portions
+    #   portions.each do |portion|
+    #     amount_owed += portion.amount
+    #   end
+    #   @user_portions_hash[user.name]=amount_owed
+    #   # why is amount owed set back to 0?
+    #   amount_owed = 0
+    # end
+
+    # Calculate Owe and Owed Money
+    exp = 0
+    port = 0
     @users.each do |user|
-      portions = user.portions
-      portions.each do |portion|
-        amount_owed += portion.amount
-      end
-      @user_portions_hash[user.name]=amount_owed
-      # why is amount owed set back to 0?
-      amount_owed = 0
+      user.expenses.each { |e| exp = exp + e.amount }
+      user.portions.each { |p| port = port + p.amount }
+      @user_portions_hash[user.name] = exp - port
+      exp = 0
+      port = 0
     end
+
 
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group
