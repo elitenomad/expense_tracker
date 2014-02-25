@@ -26,9 +26,9 @@
 <p>
   <strong>Your Expenses:</strong>
   <% @portions.each do |portion| %>
-  <p><%= portion.expense.name %></p>
+  <p><%= portion.expense.description %></p>
   <p>Cost: <%= portion.expense.amount %></p>
-  <p>You owe: <%= portion.amount %></p>
+  <p>You owe: <%= portion.amount.to_s %></p>
   <% end %>
   <p>You owe in total <%= @amount_owing %></p>
 </p>
