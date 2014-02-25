@@ -13,7 +13,7 @@
 
 
       <% @groups.each do |group| %>
-        <tr>
+        <tr data-link="<%= group_path(group) %>">
           <td>
             <% if current_user === group.owner %>
               <%= image_tag("Very-Basic-Settings-icon.png") %>
