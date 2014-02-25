@@ -3,20 +3,20 @@ class ExpensesController < ApplicationController
   
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
   
-  after_action :generate_potions, only: [:create, :update]
+  after_action :generate_portions, only: [:create, :update]
 
   # GET /expenses
   # GET /expenses.json
   def index
     @expenses = Expense.all
     @group = Group.find(params[:group_id])
-
   end
 
   # GET /expenses/1
   # GET /expenses/1.json
   def show
     @payer = @expense.payer
+    @group = Group.find_by_id @expense.group_id
   end
 
   # GET /expenses/new
@@ -76,7 +76,7 @@ class ExpensesController < ApplicationController
   private
 
     def generate_portions
-      portions_helper.generate_portion(@expense)
+      PortionsHelper.generate_portion(@expense)
     end
 
     # Use callbacks to share common setup or constraints between actions.
