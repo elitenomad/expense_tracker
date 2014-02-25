@@ -16,6 +16,8 @@ ExpenseTracker::Application.routes.draw do
   	resources :portions
   end
 
+  resources :memberships
+
   get ':action', to: 'pages#action'  
 
 
