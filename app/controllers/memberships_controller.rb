@@ -13,6 +13,10 @@ def create
       user = User.find_by(email: params[:emailid])
       if (group_users_count == 0)
         @group.users << user
+        #when added a new user the portions have to be regenerated
+        @group.expenses.each do |expense|
+          expense.regenerate_portions
+        end
         redirect_to 'groups_path'
       else
         redirect_to groupuser_path(@group), alert: "User is already added to group"
