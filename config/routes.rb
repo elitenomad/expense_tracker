@@ -10,6 +10,7 @@ ExpenseTracker::Application.routes.draw do
   
   resources :groups, {shallow: true} do
   	resources :expenses
+    resources :settlements
   end
 
   resources :expenses, {shallow: true} do
