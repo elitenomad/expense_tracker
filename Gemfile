@@ -54,6 +54,7 @@ end
 # gem for debugging
 gem 'pry'
 gem 'pry-debugger'
+gem 'public_activity'
 
 # aacsm for manage status
 # https://github.com/aasm/aasm

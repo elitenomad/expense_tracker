@@ -1,5 +1,6 @@
 class Portion < ActiveRecord::Base
-
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user_method }
 
   belongs_to :expense
   belongs_to :group
