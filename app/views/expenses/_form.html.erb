@@ -18,12 +18,12 @@
   </div>
   <div class="form-group">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, value: params[:amount] %>
   </div>
   <div class="form-group">
     <%= f.select(:user_id, @group.users.map do |user| [user.name, user.id] end, { selected: current_user.id  } , {:class => 'form-control'}) %>
   </div>
-    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.hidden_field :group_id, value: params[:group_id] %>
 
 
 
