@@ -4,7 +4,7 @@ class PortionsController < ApplicationController
   # GET /portions
   # GET /portions.json
   def index
-    @portions = Portion.all
+    @portions = Portion.current #all commented out after scope creation
   end
 
   # GET /portions/1

@@ -14,7 +14,7 @@ class ExpensesController < ApplicationController
     @all_expenses = []
     # iterate through each group and then sum up all expenses
     @groups.each do |group|
-      group.expenses.each do |expense|
+      group.expenses.current.each do |expense|
         @all_expenses << expense
       end
     end
