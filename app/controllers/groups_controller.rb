@@ -4,7 +4,7 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    #@groups = Group.all
+    
     @groups = current_user.groups
   end
 
@@ -42,7 +42,6 @@ class GroupsController < ApplicationController
     # get all the expenses for the current group
     # list in table, expense description, expense amount and link to details page
     @expenses = @group.expenses
-
   end
 
   # GET /groups/new

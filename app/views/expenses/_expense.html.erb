@@ -4,12 +4,14 @@
 	<table class="table table-hover">
 		
 		<thead>
+			<th></th>
 			<th>Description</th>
 			<th>Expense Amount</th>
 		</thead>	
 		<tbody>	
 			<% @expenses.each do |expense| %>
 				<tr data-link="<%= expense_path(expense) %>">
+					<td><%= link_to "duplicate", new_group_expense_path({group_id: expense.group.id, user_id: expense.payer.id, amount: expense.amount, description: expense.description}) %></td>
 					<td><%= expense.description %></td>
 					<td><%= number_to_currency(expense.amount) %></td>
 				</tr>
@@ -23,3 +25,5 @@
 
 </div>
 </div>
+
+

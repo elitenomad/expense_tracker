@@ -14,16 +14,16 @@
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, value: params[:description] %>
   </div>
   <div class="field">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount %>
+    <%= f.number_field :amount, value: params[:amount] %>
   </div>
   <div class="field">
     <%= f.select(:user_id, @group.users.map do |user| [user.name, user.id] end, { selected: current_user.id  } , {:class => 'form-control'}) %>
   </div>
-    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= f.hidden_field :group_id, value: params[:group_id] %>
 
 
 
