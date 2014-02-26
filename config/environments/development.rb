@@ -35,9 +35,9 @@ ExpenseTracker::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
-    domain:               'localhost',
+    domain:               'gmail.com',
     user_name:            'stalin.pranava@gmail.com',
-    password:             '!workinIBM',
+    password:             '',
     authentication:       'plain',
     enable_starttls_auto: true 
    }
