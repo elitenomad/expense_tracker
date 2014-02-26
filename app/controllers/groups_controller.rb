@@ -66,6 +66,10 @@ class GroupsController < ApplicationController
     respond_to do |format|
       if @group.save
         current_user.groups << @group
+
+        # Added as part of activity feed
+        @group.create_activity :create, owner: current_user
+        
         format.html { redirect_to @group, notice: 'Group was successfully created.' }
         format.json { render action: 'show', status: :created, location: @group }
       else

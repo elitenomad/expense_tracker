@@ -1,0 +1,7 @@
+<h1>Activities#index</h1>
+<ul>
+	<% @activities.each do |activity| %>
+		<span> <%= link_to activity.owner.name, activity.owner if activity.owner %> </span>
+    	<li> <%= render_activity activity %> </li>
+	<% end %>
+</ul>

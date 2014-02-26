@@ -1,4 +1,7 @@
 class Group < ActiveRecord::Base
+  include PublicActivity::Common
+  #tracked owner: ->(controller, model) { controller && controller.current_user_method }
+
   include AASM
   include ExpensesHelper
 
