@@ -9,9 +9,17 @@
 			<th>Expense Amount</th>
 		</thead>	
 		<tbody>	
+
 			<% @expenses.each do |expense| %>
 				<tr data-link="<%= expense_path(expense) %>">
-					<td><%= button_to "duplicate", new_group_expense_path(group_id: expense.group.id), method: :get,  expense: { user_id: expense.payer.id, amount: expense.amount, description: expense.description} %></td>
+					<td><%= form_for [@group, @expense_copy] do |f| %>
+						<%= f.hidden_field :group_id, value: expense.group.id %>
+						<%= f.hidden_field :user_id, value: expense.payer.id %>
+						<%= f.hidden_field :amount, value: expense.amount %>
+						<%= f.hidden_field :description, value: expense.description %>
+						<%= button_to "duplicate", new_group_expense_path(group_id: expense.group.id), method: :get,  expense: { user_id: expense.payer.id, amount: expense.amount, description: expense.description} %>
+						<% end %>
+					</td>
 					<td><%= expense.description %></td>
 					<td><%= number_to_currency(expense.amount) %></td>
 				</tr>

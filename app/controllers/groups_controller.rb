@@ -12,6 +12,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @users = @group.users
+    # new expense for duplication
+    @expense_copy = Expense.new
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
