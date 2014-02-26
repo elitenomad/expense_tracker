@@ -8,7 +8,7 @@ ExpenseTracker::Application.routes.draw do
   	resources :groups, only: [:new, :create, :destroy]
   end
   
-  resources :groups, {shallow: true} do
+  resources :groups do
   	resources :expenses
     resources :settlements
   end
