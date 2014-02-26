@@ -3,10 +3,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  # Added as per Public_activity gem instruction
+  include PublicActivity::StoreController
   # Added as per devise doco instructions
   before_action :authenticate_user!
 
   before_filter :configure_permitted_parameters, if: :devise_controller?
+
+def current_user_method
+  current_user
+end
+
+hide_action :current_user_method
 
 private
 

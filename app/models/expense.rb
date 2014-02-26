@@ -1,5 +1,7 @@
 class Expense < ActiveRecord::Base
-
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user_method }
+  
   belongs_to :group
   
   belongs_to :payer, class_name: "User", foreign_key: "user_id"
