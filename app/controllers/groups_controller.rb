@@ -15,12 +15,24 @@ class GroupsController < ApplicationController
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
+    @user_invested_hash = {}
+    @user_portion_hash = {}
     # Calculate Owe and Owed Money
     current_group_id = @group.id
   
    
-
+    #calculate owe and owed column
     @user_portions_hash = calculate_amount_outstanding(@users, @group)
+
+    @users.each do |user|
+      expense = user.expenses.current.where(group_id: current_group_id).sum(:amount)
+      @user_invested_hash[user.name] = expense
+    end
+
+    @users.each do |user|
+      portion = @group.portions.current.where(payee_id: user.id).sum(:amount)
+      @user_portion_hash[user.name] = portion
+    end
     # @users.each do |user|
     #   exp = user.expenses.current.where(group_id: current_group_id).sum(:amount)
     #   port = @group.portions.current.where(payee_id: user.id).sum(:amount)
