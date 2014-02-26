@@ -55,7 +55,9 @@ end
 gem 'pry'
 gem 'pry-debugger'
 gem 'public_activity'
-gem 'rails_12factor'
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
 
 # aacsm for manage status
 # https://github.com/aasm/aasm
