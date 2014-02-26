@@ -6,8 +6,8 @@ class Portion < ActiveRecord::Base
 
   belongs_to :payee, class_name: 'User'
 
-  scope :settled, { where settled: true }
-  scope :current, { where settled: false }
+  scope :settled, -> { where settled: true }
+  scope :current, -> { where settled: false }
 
   # manage the settled value with AASM 
   aasm :column => 'settled' do
