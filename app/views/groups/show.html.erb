@@ -4,10 +4,10 @@
 </h1>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col-md-6">
  
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <%= link_to "Manage Group Members", groupuser_path(@group), class:'btn btn-default' %>
     <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>
   </div>
@@ -20,13 +20,14 @@
   <div class="col-md-6">
     <table class="table table-bordered table-striped">
           <tr>
-            <th>Group Member</th>
-            <th>Member Owes</th>
+
+            <th>Group Members</th>
+            <th>Balance</th>
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
             <td><%=  user %></td>
-            <td><%=  number_to_currency(amount) %></td>
+            <td><%=  content(user,amount) %></td>
           </tr>
         <% end %>
     </table>
