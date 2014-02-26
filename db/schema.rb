@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140225082056) do
+ActiveRecord::Schema.define(version: 20140226003120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20140225082056) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "settled"
   end
 
   add_index "expenses", ["group_id"], name: "index_expenses_on_group_id", using: :btree
@@ -33,6 +34,7 @@ ActiveRecord::Schema.define(version: 20140225082056) do
     t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "groups_users", id: false, force: true do |t|
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20140225082056) do
     t.integer  "payee_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "settled"
   end
 
   create_table "users", force: true do |t|
