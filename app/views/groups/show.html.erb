@@ -28,9 +28,9 @@
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
-            <td><%=  user %></td>
-            <td><%=  @user_invested_hash[user] %></td>
-            <td><%=  @user_portion_hash[user] %></td>
+            <td><%=  user.name %></td>
+            <td><%=  @user_invested_hash[user.name] %></td>
+            <td><%=  @user_portion_hash[user.name] %></td>
             <td><%=  content(user,amount) %></td>
           </tr>
         <% end %>
