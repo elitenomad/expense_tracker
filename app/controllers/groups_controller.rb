@@ -31,7 +31,7 @@ class GroupsController < ApplicationController
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group
     # list in table, expense description, expense amount and link to details page
-    @expenses = @group.expenses
+    @expenses = @group.expenses.current
   end
 
   # GET /groups/new
