@@ -10,8 +10,8 @@ class Expense < ActiveRecord::Base
   validates :description, presence: true
   validates :amount, presence: true, numericality: {greater_than: 0}
 
-  scope :settled, { where settled: true }
-  scope :current, { where settled: false }
+  scope :settled, -> { where settled: true }
+  scope :current, -> { where settled: false }
 
   # manage the settled value with AASM 
   aasm :column => 'settled' do
