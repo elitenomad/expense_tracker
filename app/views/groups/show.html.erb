@@ -8,9 +8,20 @@
  
   </div>
   <div class="col-md-6">
-    <%= link_to "Manage Group Members", groupuser_path(@group), class:'btn btn-default' %>
-    <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>
-  </div>
+    
+    <%= form_tag '/settlements/testing', style:'display:inline-block' do %>
+        <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>fede Settle test</button>
+    <% end %>
+  
+    <%= form_tag groupuser_path(@group), style:'display:inline-block' do %>
+        <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>Manage Group Member</button>
+    <% end %>
+
+    <%= form_tag new_group_expense_path(@group), method:'get', style:'display:inline-block' do %>
+        <button <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
+    <% end %>
+
+ </div>
 </div>
 
 <%= link_to "Settle", "/groups/#{@group.id}/settlements", method: :post %>
@@ -28,9 +39,9 @@
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
-            <td><%=  user %></td>
-            <td><%=  @user_invested_hash[user] %></td>
-            <td><%=  @user_portion_hash[user] %></td>
+            <td><%=  user.name %></td>
+            <td><%=  @user_invested_hash[user.name] %></td>
+            <td><%=  @user_portion_hash[user.name] %></td>
             <td><%=  content(user,amount) %></td>
           </tr>
         <% end %>

@@ -8,6 +8,9 @@ class SettlementsController < ApplicationController
 	# members who owe have positive balances
 	# create hashes for owed and owes {user_id: balance}
 
+  def testing
+    binding.pry
+  end
 
 	# for first user in hash compare the balance with first user in 2nd hash
 	# if 1st > 2nd
