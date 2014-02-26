@@ -17,7 +17,7 @@
   </div>
   <div class="form-group">
     <%= f.label :amount %><br>
-    <%= f.number_field :amount, value: params[:amount] %>
+    <%= f.number_field :amount, value: @expense.amount.to_s %>
   </div>
   <div class="form-group">
     <%= f.select(:user_id, @group.users.map do |user| [user.name, user.id] end, { selected: current_user.id  } , {:class => 'form-control'}) %>
