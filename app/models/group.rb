@@ -5,7 +5,7 @@ class Group < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_and_belongs_to_many :users
 
-
+  has_many :settlements
   has_many :expenses
 
   has_many :portions, through: :expenses
