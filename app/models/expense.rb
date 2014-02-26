@@ -12,8 +12,8 @@ class Expense < ActiveRecord::Base
   scope :settled, -> { where settled: true }
   scope :current, -> { where settled: false }
 
-  after_create: generate_portions
-  after_update: regenerate_portions
+  after_create :generate_portions
+  after_update :regenerate_portions
 
   def generate_portions
       sharing_users  = self.group.users
