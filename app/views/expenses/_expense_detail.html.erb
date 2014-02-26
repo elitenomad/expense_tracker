@@ -1,7 +1,7 @@
 <h2><%= @expense.description %>  $ <%= @expense.amount %></h2>
 
 <p>paid by : <%= @expense.payer.name %></p>
-<p>created at : <%= @expense.created_at %></p>
+<p>created at : <%= @expense.created_at.to_s(:short) %></p>
 
 <table class="table">
   <tr>
