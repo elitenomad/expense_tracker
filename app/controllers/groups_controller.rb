@@ -17,16 +17,15 @@ class GroupsController < ApplicationController
     @user_portions_hash = {}
     # Calculate Owe and Owed Money
     current_group_id = @group.id
-    exp = 0
-    port = 0
+  
    
-    @users.each do |user|
-      user.expenses.current.where("group_id=?",current_group_id).each { |e| exp = exp + e.amount }
-      @group.portions.current.where("payee_id=?",user.id).each{|p| port = port + p.amount}
-      @user_portions_hash[user.name] = exp - port
-      exp = 0
-      port = 0
-    end
+
+    @user_portions_hash = calculate_amount_outstanding(@users, @group)
+    # @users.each do |user|
+    #   exp = user.expenses.current.where(group_id: current_group_id).sum(:amount)
+    #   port = @group.portions.current.where(payee_id: user.id).sum(:amount)
+    #   @user_portions_hash[user.name] = exp - port
+    # end
 
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group

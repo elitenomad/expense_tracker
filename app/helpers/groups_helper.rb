@@ -6,4 +6,6 @@ module GroupsHelper
         @user_portions_hash[user] = content_tag(:strong, amount,class:'text-danger')
       end
 	end
+
+	
 end
