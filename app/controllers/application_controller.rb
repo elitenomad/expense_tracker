@@ -28,7 +28,7 @@ private
     users.each do |user|
         exp = user.expenses.current.where(group_id: group.id).sum(:amount)
         port = group.portions.current.where(payee_id: user.id).sum(:amount)
-        user_portions_hash[user.name] = exp - port
+        user_portions_hash[user] = exp - port
       end
       user_portions_hash
   end
