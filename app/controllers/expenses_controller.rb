@@ -28,9 +28,9 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new(expense_params)
-    @payer = current_user
     @group = Group.find(params[:group_id])
+    @expense = @group.expenses.new
+    @payer = current_user
   end
 
   # GET /expenses/1/edit
@@ -42,7 +42,8 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    @group = Group.find(params[:group_id])
+    @expense = @group.expenses.new(expense_params)
 
     respond_to do |format|
       if @expense.save
