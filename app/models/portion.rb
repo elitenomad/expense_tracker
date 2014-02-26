@@ -1,5 +1,6 @@
 class Portion < ActiveRecord::Base
 
+
   belongs_to :expense
   belongs_to :group
 
@@ -7,5 +8,6 @@ class Portion < ActiveRecord::Base
 
   scope :settled, -> { where settled: true }
   scope :current, -> { where settled: false }
+
 
 end

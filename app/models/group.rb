@@ -5,6 +5,7 @@ class Group < ActiveRecord::Base
   belongs_to :owner, class_name: 'User'
   has_and_belongs_to_many :users
 
+
   has_many :expenses
 
   has_many :portions, through: :expenses
@@ -34,6 +35,7 @@ class Group < ActiveRecord::Base
     end
   end
 
+
   def settle_all_expenses
     binding.pry
     self.expenses.current.each do |expense|
@@ -45,4 +47,5 @@ class Group < ActiveRecord::Base
       portion.update_attribute(:settled, true)
     end
   end
+
 end

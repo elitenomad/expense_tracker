@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20140226040825) do
     t.boolean  "settled",    default: false
   end
 
+  create_table "settlements", force: true do |t|
+    t.integer "owed_id"
+    t.integer "owes_id"
+    t.decimal "payment"
+    t.integer "group_id"
+    t.boolean "confirm"
+  end
+
+  add_index "settlements", ["group_id"], name: "index_settlements_on_group_id", using: :btree
+  add_index "settlements", ["owed_id"], name: "index_settlements_on_owed_id", using: :btree
+  add_index "settlements", ["owes_id"], name: "index_settlements_on_owes_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

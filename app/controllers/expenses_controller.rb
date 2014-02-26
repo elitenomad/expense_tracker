@@ -28,7 +28,7 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new
+    @expense = Expense.new(expense_params)
     @payer = current_user
     @group = Group.find(params[:group_id])
   end
@@ -89,6 +89,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:description, :amount, :group_id, :user_id)
+      params.require(:expense).permit(:description, :amount, :user_id)
     end
 end
