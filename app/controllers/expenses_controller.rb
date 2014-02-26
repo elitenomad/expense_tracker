@@ -2,8 +2,6 @@ class ExpensesController < ApplicationController
   include PortionsHelper  
   
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  
-  after_action :generate_portions, only: [:create, :update]
 
   # GET /expenses
   # GET /expenses.json
@@ -83,10 +81,6 @@ class ExpensesController < ApplicationController
   end
 
   private
-
-    def generate_portions
-      PortionsHelper.generate_portion(@expense)
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
