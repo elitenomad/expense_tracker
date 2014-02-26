@@ -17,8 +17,9 @@
 						<%= f.hidden_field :user_id, value: expense.payer.id %>
 						<%= f.hidden_field :amount, value: expense.amount %>
 						<%= f.hidden_field :description, value: expense.description %>
-						<%= button_to "duplicate", new_group_expense_path(group_id: expense.group.id), method: :get,  expense: { user_id: expense.payer.id, amount: expense.amount, description: expense.description} %>
+						<%= button_to "Copy", new_group_expense_path(@group) %>
 						<% end %>
+
 					</td>
 					<td><%= expense.description %></td>
 					<td><%= number_to_currency(expense.amount) %></td>
