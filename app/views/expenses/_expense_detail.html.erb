@@ -9,10 +9,17 @@
     <th>Your Share</th>
   </tr> 
   <% @group.users.each do |user| %>
-    <% portion = @expense.portions.find_by_payee_id user.id%>
+    <% portion = @expense.portions.find_by_payee_id user.id %>
+
     <tr>
       <td><%= user.name %></td>
-      <td>$ <%= portion.amount.to_s %></td>
+      <td>
+        <% if portion.present? %> 
+          <%= portion.amount.to_s %>
+        <% else %>
+          0
+        <% end %>
+      </td>
     </tr>
   <% end %>                          
   
