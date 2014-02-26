@@ -9,12 +9,53 @@ class SettlementsController < ApplicationController
 	# create hashes for owed and owes {user_id: balance}
 
   def testing
-    binding.pry
+    if params[:check] == 'open'
+      # reopen a settled group
+      group = Group.find params[:group_id]
+      group.open
+      group.save
+      redirect_to group
+    elsif params[:check] == 'confirm'
+      settlement = Settlement.find params[:settlement_id]
+      group = Group.find params[:group_id]
+      settlement.confirm = true
+      settlement.save
+      # call function if everyone confirmed reopen the group
+      if all_group_settlements_confirmed?(group)
+        group.open
+        group.save
+      end
+      redirect_to group
+    else
+      # settle the group
+      group = Group.find params[:group_id]
+      group.settle
+      group.save
+      create_random_settlement(group)
+      redirect_to group
+    end
+  end
+
+  def all_group_settlements_confirmed?(group)
+    # if thereis at least 1 false, the function return false, otherwise return true
+    check = true
+    group.settlements.each do |settlement| 
+      if settlement.confirm == false
+       check = false
+      end
+    end
+    check
+  end
+
+  def create_random_settlement(group)
+    time = Time.now.utc
+    Settlement.create(owed_id: 1, owes_id: 2, payment: 10, group_id: group.id, settle_at: time)
+    Settlement.create(owed_id: 3, owes_id: 2, payment: 10, group_id: group.id, settle_at: time)
   end
 
 	# for first user in hash compare the balance with first user in 2nd hash
 	# if 1st > 2nd
-	# update 1st user balance
+	# update 1st user balanceu
 	# update 2nd user balance and store 2nd user owes 1st user
 	# you need to go to 3rd user
 	def create

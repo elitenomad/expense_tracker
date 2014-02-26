@@ -12,6 +12,9 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @users = @group.users
+    # need last set of settlement
+    last_set = @group.settlements.order(settle_at: :desc).first
+    @settlements = @group.settlements.where('settle_at = ?', last_set.settle_at)
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}

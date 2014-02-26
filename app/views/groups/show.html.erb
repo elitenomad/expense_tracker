@@ -8,8 +8,14 @@
  
   </div>
   <div class="col-md-6">
-    
-    <%= form_tag '/settlements/testing', style:'display:inline-block' do %>
+     <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
+        <%= hidden_field_tag :check, "open" %>
+        <%= hidden_field_tag :group_id, @group.id %>
+        <button <%= @group.status != 'open' ? "" : "disabled" %>  class='btn btn-default'>Re open</button>
+    <% end %>   
+
+    <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
+        <%= hidden_field_tag :group_id, @group.id %>
         <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>fede Settle test</button>
     <% end %>
   
@@ -23,6 +29,9 @@
 
  </div>
 </div>
+  
+
+
 
 <%= link_to "Settle", "/groups/#{@group.id}/settlements", method: :post %>
 
@@ -43,6 +52,21 @@
             <td><%=  @user_invested_hash[user.name] %></td>
             <td><%=  @user_portion_hash[user.name] %></td>
             <td><%=  content(user,amount) %></td>
+            <% @settlements.each do |settlement| %>          
+              <% if @group.status == 'settling' && settlement.owed == user %>
+                <td>
+                  <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
+                    <%= hidden_field_tag :check, "confirm" %>
+                    <%= hidden_field_tag :group_id, @group.id %>
+                    <%= hidden_field_tag :settlement_id, settlement.id %>
+                    <%= hidden_field_tag :owed_id, user.id %>
+                    <button <%= settlement.confirm == true ? 'disabled' : "" %> class='btn btn-default'>
+                      Confirm
+                    </button>
+                  <% end %>   
+                </td>
+              <% end %>
+            <% end %>
           </tr>
         <% end %>
     </table>

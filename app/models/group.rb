@@ -1,10 +1,11 @@
 class Group < ActiveRecord::Base
   include AASM
-  include ExpensesHelper
+
 
   belongs_to :owner, class_name: 'User'
   has_and_belongs_to_many :users
 
+  has_many :settlements
 
   has_many :expenses
 
@@ -37,7 +38,6 @@ class Group < ActiveRecord::Base
 
 
   def settle_all_expenses
-    binding.pry
     self.expenses.current.each do |expense|
       expense.update_attribute(:settled, true)
     end
