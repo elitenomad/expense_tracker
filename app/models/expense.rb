@@ -1,5 +1,4 @@
 class Expense < ActiveRecord::Base
-  include AASM
 
   belongs_to :group
   
@@ -13,14 +12,20 @@ class Expense < ActiveRecord::Base
   scope :settled, -> { where settled: true }
   scope :current, -> { where settled: false }
 
-  # manage the settled value with AASM 
-  aasm :column => 'settled' do
-    state :false, :initial => true
-    state :true
+  after_create :generate_portions
+  after_update :regenerate_portions
 
-    event :settle do
-      transitions from: :false, to: :true
-    end 
+  def generate_portions
+      sharing_users  = self.group.users
+      portion_amount = self.amount / sharing_users.count
+      sharing_users.each do |user|
+        self.portions.create(expense_id: self.id, payee_id: user.id, amount: portion_amount)
+      end
   end
 
+  def regenerate_portions
+    self.portions.destroy_all
+    self.generate_portions
+  end
+  
 end

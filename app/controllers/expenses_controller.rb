@@ -2,8 +2,6 @@ class ExpensesController < ApplicationController
   include PortionsHelper  
   
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
-  
-  after_action :generate_portions, only: [:create, :update]
 
   # GET /expenses
   # GET /expenses.json
@@ -30,9 +28,9 @@ class ExpensesController < ApplicationController
 
   # GET /expenses/new
   def new
-    @expense = Expense.new
-    @payer = current_user
     @group = Group.find(params[:group_id])
+    @expense = @group.expenses.new
+    @payer = current_user
   end
 
   # GET /expenses/1/edit
@@ -44,7 +42,8 @@ class ExpensesController < ApplicationController
   # POST /expenses
   # POST /expenses.json
   def create
-    @expense = Expense.new(expense_params)
+    @group = Group.find(params[:group_id])
+    @expense = @group.expenses.new(expense_params)
 
     respond_to do |format|
       if @expense.save
@@ -84,10 +83,6 @@ class ExpensesController < ApplicationController
 
   private
 
-    def generate_portions
-      PortionsHelper.generate_portion(@expense)
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_expense
       @expense = Expense.find(params[:id])
@@ -95,6 +90,6 @@ class ExpensesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expense_params
-      params.require(:expense).permit(:description, :amount, :group_id, :user_id)
+      params.require(:expense).permit(:description, :amount, :user_id)
     end
 end
