@@ -3,7 +3,7 @@ ExpenseTracker::Application.routes.draw do
 
   #get "users/index"
   devise_for :users 
-
+  resources :activities
   resources :users, {shallow: true} do
   	resources :groups, only: [:new, :create, :destroy]
   end

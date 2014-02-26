@@ -1,0 +1,7 @@
+Added a expense
+
+<% if activity.trackable %>
+  <%= link_to activity.trackable.amount.to_s + " under "+ activity.trackable.description, activity.trackable %>
+<% else %>
+  which has since been removed
+<% end %>
