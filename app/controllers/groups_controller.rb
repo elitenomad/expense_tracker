@@ -26,7 +26,7 @@ class GroupsController < ApplicationController
 
     # Need to create Users and loop through
     # their respective portions and create a owing amount
-    @user_portions_hash = {}
+    @user_balance_hash = {}
     @user_invested_hash = {}
     @user_portion_hash = {}
     # Calculate Owe and Owed Money
@@ -34,7 +34,7 @@ class GroupsController < ApplicationController
   
    
     #calculate owe and owed column
-    @user_portions_hash = calculate_amount_outstanding(@users, @group)
+    @user_balance_hash = calculate_amount_outstanding(@users, @group)
 
     @users.each do |user|
       expense = user.expenses.current.where(group_id: current_group_id).sum(:amount)
