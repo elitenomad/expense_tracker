@@ -9,12 +9,14 @@ module GroupsHelper
 	end
 
     def show_balance(amount)
-    if (amount >= 0)
+      if (amount > 0)
         content_tag(:strong, amount.round(2),class:'text-success')
-      else
+      elsif (amount < 0)
         content_tag(:strong, amount.round(2),class:'text-danger')
+      else
+        content_tag(:strong, amount.round(2),class:'text-muted')
       end
-  end
+    end
 
 	
 end
