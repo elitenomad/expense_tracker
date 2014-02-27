@@ -16,3 +16,31 @@ $navbar-default-brand-hover-color: #1B676B;
 	border: #519548;
 }
 
+
+/* footer */
+
+footer {
+  margin-top: 45px;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: $gray-light;
+  a {
+  		color: #555;
+  		&:hover {
+		    color: #fff;
+		  }
+	}
+  small {
+	  float: left;
+	}
+
+	ul {
+	  float: right;
+	  list-style: none;
+	  li {
+		  float: left;
+		  margin-left: 10px;
+		}
+	}
+}

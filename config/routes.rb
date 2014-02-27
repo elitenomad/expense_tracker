@@ -26,6 +26,7 @@ ExpenseTracker::Application.routes.draw do
   post '/settlements/testing', to: 'settlements#testing'
 
   root to: "pages#index"
-   
+  get "about" => "static_pages#about"
+  get "contact" => "static_pages#contact"
 
 end
