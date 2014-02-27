@@ -14,22 +14,17 @@
 	<div id='wrap'>
 
 		<%= render 'layouts/header' %>
-
-	<div id="page-title">
-		<div id="page-title-bg" class="container-fluid">
-			<h1 ><%= yield(:title) %></h1>
-		</div>
-	</div>
+<div id="landing">
 
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">				
 				<div class="row">
 						<% if notice %>
-						  <p class="alert alert-notice"><%= notice %><i class='close'></i></p>
+						  <p class="alert alert-notice well"><%= notice %><i class='close'></i></p>
 						<% end %>
 						<% if alert %>
-						  <p class="alert alert-error"><%= alert %><i class='close'></i></p>
+						  <p class="alert alert-error well"><%= alert %><i class='close'></i></p>
 						<% end %>	
 				</div>
 			</div>
@@ -41,7 +36,8 @@
 		<div id="push"></div>
 
 	</div>
-	<div>
+</div>
+	<div id="footer">
 		<%= render 'layouts/footer' %>
 	</div>
 		
