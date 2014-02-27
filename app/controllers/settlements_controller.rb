@@ -57,13 +57,15 @@ class SettlementsController < ApplicationController
     		elsif abs_owes_balance >= owed_balance	 
     			abs_owes_balance = abs_owes_balance - owed_balance    			
     			# create settlement, 
+           UserMailer.group_settlement_notify(user,user2,owed_balance,@group).deliver
     			 Settlement.create(owed_id: user.id, owes_id: user2.id, payment: owed_balance, group_id: @group.id, confirm: false)
     			 @owed.delete(user)
     			 if @owed.count == 0
     			 	break
     			 end
     		else 
-    			owed_balance = owed_balance - abs_owes_balance    	
+    			owed_balance = owed_balance - abs_owes_balance  
+          UserMailer.group_settlement_notify(user,user2,abs_owes_balance,@group).deliver  	
     			Settlement.create(owed_id: user.id, owes_id: user2.id, payment: abs_owes_balance, group_id: @group.id, confirm: false)
     		  @owed[user] = owed_balance
     		end
