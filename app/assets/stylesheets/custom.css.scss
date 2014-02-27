@@ -4,9 +4,9 @@ $navbar-default-link-color: #1B676B;
 $navbar-default-link-hover-bg: #EAFDE6;
 $navbar-default-toggle-hover-bg: #EAFDE6;
 $navbar-default-toggle-icon-bar-bg: #1B676B;
-$navbar-default-brand-hover-bg: #EAFDE6;
 $navbar-default-link-hover-color: #1B676B;
 $navbar-default-brand-hover-color: #1B676B;
+
 
 
 @import "bootstrap";
@@ -15,10 +15,59 @@ $navbar-default-brand-hover-color: #1B676B;
 	font-family: 'Lato', sans-serif;
 }
 
+
 .navbar {
 	margin-bottom:0;
-	border: #519548;
+	border-radius:0;
+	border-top:none;
+	border-left:none;
+	border-right:none;
+	border-bottom: solid 5px #519548;
+	background: #BEF202;
 }
+
+
+.row {
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+
+.container {
+	padding-left: 8px;
+	padding-right: 8px;
+	max-width: 1000px;
+}
+.glyphicon-chevron-right {
+	float: right;
+}
+
+
+
+.container-fluid {
+	background: #BEF202;
+	max-width: 1000px;
+}
+
+#page-title {
+	background-color: rgba(27,103,107, 1);
+	padding:15px;
+	color:white;
+	margin-bottom:10px;
+	margin-top:0;
+}
+#page-title-bg {
+	background-color: rgba(27,103,107, 1);
+}
+
+.navbar-brand {
+	font-family: 'pacificoregular', arial;
+	font-size: 26px;
+
+	-webkit-filter: drop-shadow(-2px 3px #FFF200);
+	
+}
+
 
 /* stickey footer bootstrap */
 html,
@@ -89,7 +138,10 @@ div#footer {
 	margin-top: 80px;
 }
 
+<<<<<<< HEAD
+=======
 div#loginbox{
 	margin-top:75px;
 }
+>>>>>>> master
 
