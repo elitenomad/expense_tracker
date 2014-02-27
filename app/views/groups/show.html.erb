@@ -1,13 +1,6 @@
-<div id="page-header" class="row">
-  <div class="col-md-12"></div>
-  <h1>
-    <%= @group.name %>
-  </h1>
-  </div>
-</div>
+<%= content_for(:title, "#{@group.name}") %>
 
 <div class="row">
-
   <div class="col-md-6">
 
     <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
