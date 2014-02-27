@@ -1,5 +1,9 @@
 <h1>My Groups</h1>
 
+<h2>Your overall balance is <%= show_balance(@total_balance) %> </h2>
+
+
+
 <div class="row">
   <%= form_for(@group, html: {:role => 'form', :class => 'form-inline'}) do |f| %>
       <%= f.text_field :name, :placeholder => 'new group name', :class => 'form-control' %>
@@ -13,7 +17,7 @@
       <tr>
         <th></th>
         <th>Group</th>
-        <th>Owner</th>
+        <th>Balance</th>
       </tr>
 
 
@@ -25,7 +29,9 @@
             <% end %>
           </td>
           <td> <%= group.name %> </td>
-          <td> <%= group.owner.name %> <span class="glyphicon glyphicon-chevron-right"></span></td>
+          <td> <%= show_balance(@my_balances[group]) %> 
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </td>
         </tr>
       <% end %>
     </table>

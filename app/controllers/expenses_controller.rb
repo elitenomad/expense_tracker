@@ -9,13 +9,10 @@ class ExpensesController < ApplicationController
     # this gets all the groups the current user is a member of
     @groups = current_user.groups
     # array to hold all the expenses
-    @all_expenses = []
-    # iterate through each group and then sum up all expenses
-    @groups.each do |group|
-      group.expenses.current.each do |expense|
-        @all_expenses << expense
-      end
-    end
+       
+    @all_expenses = Expense.current.where(group_id: @groups.map(&:id)).order(created_at: :desc)
+
+
 
   end
 

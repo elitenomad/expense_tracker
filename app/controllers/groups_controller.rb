@@ -7,8 +7,10 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.order(created_at: :desc).all
     @group = current_user.groups.new
     @my_balances = {}
+    @total_balance = 0
     @groups.each do |group|
       @my_balances[group] = calculate_balance(group,current_user)
+      @total_balance = @total_balance + calculate_balance(group,current_user)
     end
   end
 
