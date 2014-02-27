@@ -40,7 +40,7 @@ ExpenseTracker::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
@@ -63,7 +63,7 @@ ExpenseTracker::Application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found).
@@ -77,4 +77,20 @@ ExpenseTracker::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #email configuration
+  config.action_mailer.default_url_options = { :host => 'wdiexpense.herokuapp.com' }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_options = {from: 'app22556715@heroku.com'}
+  #config.action_mailer.async = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    domain:               'heroku.com',
+    user_name:            'app22556715@heroku.com',
+    password:             'o8iqq9ey',
+    authentication:       'plain',
+    enable_starttls_auto: true 
+   }
 end

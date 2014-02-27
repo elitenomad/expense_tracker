@@ -1,7 +1,5 @@
-
 <%= content_for(:title, "My Groups") %>
 <div class="row">
-  
   <div class="container">
     <div class="row">
       <h2 class="text-muted">Your overall balance is <%= show_balance(@total_balance) %> </h2>
@@ -16,8 +14,9 @@
           <%= f.submit class: "btn btn-default" %>
       <% end %>  
 
+
+        <% end %>  
       </div> 
-  
     </div>
 
     <div class="row">
@@ -29,6 +28,7 @@
               <th>Group</th>
               <th>Balance</th>
             </tr>
+
             <% @groups.each do |group| %>
               <tr data-link="<%= group_path(group) %>">
                 <td>
@@ -42,6 +42,7 @@
                 </td>
               </tr>
             <% end %>
+            </tbody>
           </table>
         <% else %>
           <h4> create a group to start sharing expenses with your friends .. </h4>
