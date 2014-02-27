@@ -24,7 +24,7 @@ def create
 
         redirect_to groups_path(@group), alert: "User is successfully added to group"
       else
-        redirect_to groupuser_path(@group), alert: "User is already added to group"
+        redirect_to group_users_path(@group), alert: "User is already added to group"
       end
     else
         # Need to perform another logic
