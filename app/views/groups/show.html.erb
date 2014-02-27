@@ -8,18 +8,13 @@
  
   </div>
   <div class="col-md-6">
-     <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
-        <%= hidden_field_tag :check, "open" %>
-        <%= hidden_field_tag :group_id, @group.id %>
-        <button <%= @group.status != 'open' ? "" : "disabled" %>  class='btn btn-default'>Re open</button>
-    <% end %>   
 
-    <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
-        <%= hidden_field_tag :group_id, @group.id %>
-        <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>fede Settle test</button>
+    <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
+      <%= f.hidden_field :do_settlement, value: 'true' %>
+        <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default'>Settle Group</button>
     <% end %>
   
-    <%= form_tag groupuser_path(@group), style:'display:inline-block' do %>
+    <%= form_tag group_users_path(@group), method:'GET', style:'display:inline-block' do %>
         <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>Manage Group Member</button>
     <% end %>
 
@@ -32,9 +27,6 @@
   
 
 
-
-<%= link_to "Settle", "/groups/#{@group.id}/settlements", method: :post %>
-
 <div class="row">
   <h3>Overview</h3>
   <div class="col-md-6">
@@ -45,6 +37,7 @@
             <th>Invested </th>
             <th>Portion </th>
             <th>Balance </th>
+            <th></th>
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
@@ -52,21 +45,17 @@
             <td><%=  @user_invested_hash[user.name] %></td>
             <td><%=  @user_portion_hash[user.name] %></td>
             <td><%=  content(user,amount) %></td>
-            <% @settlements.each do |settlement| %>          
-              <% if @group.status == 'settling' && settlement.owed == user %>
-                <td>
-                  <%= form_tag "/settlements/testing", style:'display:inline-block' do %>
-                    <%= hidden_field_tag :check, "confirm" %>
-                    <%= hidden_field_tag :group_id, @group.id %>
-                    <%= hidden_field_tag :settlement_id, settlement.id %>
-                    <%= hidden_field_tag :owed_id, user.id %>
-                    <button <%= settlement.confirm == true ? 'disabled' : "" %> class='btn btn-default'>
-                      Confirm
-                    </button>
+            <td>     
+              <% if @group.status == 'settling' && (@oweds.include? user) %>
+                  <% last_settlement = @settlements.where("owed_id = ?", user.id).first %>
+                  <%= form_for [@group,last_settlement], style:'display:inline-block' do |f| %>
+                  <%= f.hidden_field :confirm_settlement,  value: 'true' %>
+                  <button <%= last_settlement.confirm == true ? 'disabled' : "" %> type='submit' class='btn btn-default'>
+                    Confirm
+                  </button>
                   <% end %>   
-                </td>
               <% end %>
-            <% end %>
+            </td>
           </tr>
         <% end %>
     </table>

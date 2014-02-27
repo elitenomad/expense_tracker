@@ -13,8 +13,14 @@ class GroupsController < ApplicationController
   def show
     @users = @group.users
     # need last set of settlement
+    
+    @settlements = @group.settlements
+    @oweds = []
     last_set = @group.settlements.order(settle_at: :desc).first
-    @settlements = @group.settlements.where('settle_at = ?', last_set.settle_at)
+    if last_set.present?
+      @settlements = @group.settlements.where('settle_at = ?', last_set.settle_at)
+      @oweds = @settlements.map do |s| s.owed end
+    end
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
@@ -112,6 +118,6 @@ class GroupsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def group_params
-      params.require(:group).permit(:name, :owner_id)
+      params.require(:group).permit(:name, :owner_id, :do_settlement)
     end
 end

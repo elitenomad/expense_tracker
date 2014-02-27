@@ -1,5 +1,7 @@
 ExpenseTracker::Application.routes.draw do
 
+  post "/groups/:id/adduser" => "groups#adduser", as: 'adduser'
+  get "/groups/:id/index" => "users#index", as: 'group_users'
 
   #get "users/index"
   devise_for :users 
@@ -20,10 +22,6 @@ ExpenseTracker::Application.routes.draw do
   resources :memberships
 
   get ':action', to: 'pages#action'  
-
-
-  match "/groups/:id/adduser" => "groups#adduser", as: 'adduser', via: :post
-  match "/groups/:id/index" => "users#index", as: 'groupuser', via: :get
 
   post '/settlements/testing', to: 'settlements#testing'
 

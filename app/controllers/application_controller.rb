@@ -32,4 +32,6 @@ private
       end
       user_portions_hash
   end
+
+
 end
