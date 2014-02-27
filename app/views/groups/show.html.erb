@@ -2,23 +2,25 @@
 <%= content_for(:title, "#{@group.name}") %>
 
 <div class="row">
-  <div class="pull-left">
-        <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
+  <div class="pull-right">
+            <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
           <%= f.hidden_field :do_settlement, value: 'true' %>
-            <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default'>Settle Group</button>
+            <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default settle'>Settle Debts</button>
         <% end %>
         <%= form_tag group_users_path(@group), method:'GET', style:'display:inline-block' do %>
             <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>Manage Group Member</button>
         <% end %>
     
-    </div>
+  </div>
 </div>
   
 
 
 <div class="row">
-  <h3>Overview</h3>
-  <div class="col-md-6 col-md-offset-1">
+  
+  <div class="col-md-8">
+    <h3>Who Owes What</h3>
+
     <table class="table table-bordered table-striped">
           <tr>
 
@@ -55,7 +57,7 @@
 
 <div class="row">
   <div>
-       <button  id="addexpense" <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
+       <button  id="addexpense" <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default expense'>Add Expense</button>
   </div>
   <p></p>
   <div id="expense_form">
@@ -64,7 +66,7 @@
   <% if @expenses.count > 0 %>
     <%= render "expenses/expense" %>
   <% else %>
-    <h4>Insert the first shared expense</h4>
+    <p class="text-highlight">Great news, no expenses! Add some, I dare you.</p>
   <% end %>
 </div>
 </div>
