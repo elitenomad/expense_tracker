@@ -12,61 +12,18 @@
 </head>
 <body>
 	<div id='wrap'>
+
 		<%= render 'layouts/header' %>
-
-<<<<<<< HEAD
-	<nav class="navbar navbar-default" role="navigation">
-	  <div class="container-fluid">
-	    <!-- Brand and toggle get grouped for better mobile display -->
-	    <div class="navbar-header">
-	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-	        <span class="sr-only">Toggle navigation</span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	        <span class="icon-bar"></span>
-	      </button>
-	      <a class="navbar-brand" href="/groups">Expense Tracker</a>
-	    </div>
-
-	    <!-- Collect the nav links, forms, and other content for toggling -->
-	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li><%= link_to "My Expenses", expenses_path %></li>
-	        <li><%= link_to "My Groups", groups_path %></li>
-	      </ul>
-	      <ul class="nav navbar-nav navbar-right">
-
-	          
-					<% if user_signed_in? %>
-		        <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          		<%= current_user.name %><b class="caret"></b>
-	        	</a>
-	      		<ul class="dropdown-menu">
-						  <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
-						  <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
-					  </ul>
-					<% else %>
-					  <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
-					  <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
-					<% end %>
-
-	          
-	        </li>
-	      </ul>
-	    </div><!-- /.navbar-collapse -->
-	  </div><!-- /.container-fluid -->
-	</nav>
 
 	<div id="page-title">
 		<div id="page-title-bg" class="container-fluid">
 			<h1 ><%= yield(:title) %></h1>
 		</div>
+	</div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				
+			<div class="col-md-12">				
 				<div class="row">
 						<% if notice %>
 						  <p class="alert alert-notice well"><%= notice %><i class='close'></i></p>
@@ -82,6 +39,7 @@
 		</div>
 
 		<div id="push"></div>
+
 	</div>
 	<div id="footer">
 		<%= render 'layouts/footer' %>
