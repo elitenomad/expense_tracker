@@ -15,9 +15,9 @@
       <td><%= user.name %></td>
       <td>
         <% if portion.present? %> 
-          <%= portion.amount.to_s %>
+          <%= number_to_currency(portion.amount.to_s) %>
         <% else %>
-          0
+          $0.00
         <% end %>
       </td>
     </tr>

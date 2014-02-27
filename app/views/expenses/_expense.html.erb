@@ -1,12 +1,12 @@
 <div id="expense-list">
-<h3>Group Expenses</h3>
+<h3>Shared Expenses</h3>
 <div class="col-md-6">
 	<table class="table table-hover">
 		
 		<thead>
 			<th></th>
 			<th>Description</th>
-			<th>Expense Amount</th>
+			<th>Cost</th>
 		</thead>	
 		<tbody>	
 
@@ -22,7 +22,7 @@
 
 					</td>
 					<td><%= expense.description %></td>
-					<td><%= number_to_currency(expense.amount) %></td>
+					<td><%= number_to_currency(expense.amount) %><span class="glyphicon glyphicon-chevron-right"></span></td>
 				</tr>
 			<% end %>
 

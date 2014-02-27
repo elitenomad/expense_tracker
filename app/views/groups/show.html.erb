@@ -22,16 +22,16 @@
           <tr>
 
             <th>Group Members</th>
-            <th>Invested </th>
-            <th>Portion </th>
-            <th>Balance </th>
+            <th>Expenses Paid</th>
+            <th>Your Share</th>
+            <th>Balance</th>
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
             <td><%=  user.name %></td>
-            <td><%=  @user_invested_hash[user.name] %></td>
-            <td><%=  @user_portion_hash[user.name] %></td>
-            <td><%=  content(user,amount) %></td>
+            <td><%=  number_to_currency(@user_invested_hash[user.name]) %></td>
+            <td><%=  number_to_currency(@user_portion_hash[user.name]) %></td>
+            <td><%=  number_to_currency(content(user,amount)) %></td>
           </tr>
         <% end %>
     </table>
