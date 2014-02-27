@@ -12,5 +12,6 @@
 
 
 
-<%= link_to 'Edit', edit_expense_path %> |
-<%= link_to 'Back', group_path(@expense.group) %>
+<%= link_to 'Edit Expense', edit_expense_path %> |
+<%= link_to "Back to #{@group.name} group", group_path(@expense.group) %>
+

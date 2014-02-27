@@ -1,13 +1,13 @@
 <h1>My Groups</h1>
 <div class="row">
-  <%= link_to 'Add a new Group', new_group_path %>
+  <%= link_to 'Add a new Group', new_group_path, class: "btn btn-default" %>
 </div>
 <div class="row">
   <div class="col-md-6">
-    <table class="table table-bordered table-hover">
+    <table class="table table-hover">
       <tr>
         <th></th>
-        <th>Name</th>
+        <th>Group</th>
         <th>Owner</th>
       </tr>
 
@@ -16,11 +16,11 @@
         <tr data-link="<%= group_path(group) %>">
           <td>
             <% if current_user === group.owner %>
-              <%= image_tag("Very-Basic-Settings-icon.png") %>
+              <span class="glyphicon glyphicon-star"></span>
             <% end %>
           </td>
           <td> <%= group.name %> </td>
-          <td> <%= group.owner.name %> </td>
+          <td> <%= group.owner.name %> <span class="glyphicon glyphicon-chevron-right"></span></td>
         </tr>
       <% end %>
     </table>

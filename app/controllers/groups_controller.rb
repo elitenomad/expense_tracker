@@ -12,8 +12,8 @@ class GroupsController < ApplicationController
   # GET /groups/1.json
   def show
     @users = @group.users
-    # need last set of settlement
-    
+
+    # need last set of settlement    
     @settlements = @group.settlements
     @oweds = []
     last_set = @group.settlements.order(settle_at: :desc).first
@@ -21,6 +21,8 @@ class GroupsController < ApplicationController
       @settlements = @group.settlements.where('settle_at = ?', last_set.settle_at)
       @oweds = @settlements.map do |s| s.owed end
     end
+
+
     # Need to create Users and loop through
     # their respective portions and create a owing amount
     @user_portions_hash = {}
@@ -103,6 +105,11 @@ class GroupsController < ApplicationController
   # DELETE /groups/1
   # DELETE /groups/1.json
   def destroy
+    # Email Notification for users
+    users = @group.users
+    users.each do |user|
+      UserMailer.group_destroy_notify(@group,user)
+    end
     @group.destroy
     respond_to do |format|
       format.html { redirect_to groups_url }
