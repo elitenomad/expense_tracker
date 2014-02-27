@@ -15,10 +15,12 @@
 	float: right;
 }
 
-#page-header {
+#page-title {
 	background: #1B676B;
-	padding:30px;
+	padding:15px;
 	color:white;
+	margin-bottom:10px;
+	margin-top:0;
 }
 
 .container-fluid {
