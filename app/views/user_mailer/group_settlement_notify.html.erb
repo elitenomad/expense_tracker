@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+
+    <h3><%= @group.name %> Settlement sheet. Please validate <%= @user2.email %></h3>
+  
+    <table border="2">
+      <tr>
+        <th>owed_id</th>
+        <th>owes_id</th>
+        <th>owed_balance</th>
+      </tr>
+      <tr>
+        <td><%= @user.name %></td>
+        <td><%= @user2.name %></td>
+        <td><%= @owed_balance %></td>
+      </tr>
+    </table>
+    
+
+
+    <p>
+      Please validate expenses by signing in through URL <a href='http://wdiexpense.herokuapp.com/users/sign_in'>http://wdiexpense.herokuapp.com/users/sign_in</a>.
+    </p>
+    
+
+    <p>Thanks, Have a Lovely day!</p>
+  </body>
+</html>
