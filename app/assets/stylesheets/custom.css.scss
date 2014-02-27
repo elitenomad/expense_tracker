@@ -7,11 +7,7 @@ $navbar-default-toggle-icon-bar-bg: #1B676B;
 $navbar-default-link-hover-color: #1B676B;
 $navbar-default-brand-hover-color: #1B676B;
 
-<<<<<<< HEAD
 
-@import "bootstrap";
-=======
->>>>>>> master
 
 @import "bootstrap";
 
@@ -77,7 +73,6 @@ $navbar-default-brand-hover-color: #1B676B;
 html,
 body {
 	height: 100%;
-
 	/* The html and body elements cannot have any padding or margin. */
 }
 
@@ -143,4 +138,10 @@ div#footer {
 	margin-top: 80px;
 }
 
+<<<<<<< HEAD
+=======
+div#loginbox{
+	margin-top:75px;
+}
+>>>>>>> master
 
