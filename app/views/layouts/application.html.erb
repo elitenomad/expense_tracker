@@ -82,6 +82,15 @@
 		$("tr[data-link]").click(function() {
   		window.location = $(this).data("link");
 		});
+
+		$('#addexpense').on('click',function(){
+			$('#expense_form').toggle();
+		});
+
+		$(window).load(function() {
+		  $('#expense_form').hide();
+		});
+		
 	</script>
 </body>
 </html>
