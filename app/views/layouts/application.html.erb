@@ -12,18 +12,18 @@
 </head>
 <body>
 	<div id='wrap'>
+
 		<%= render 'layouts/header' %>
 
-		<div id="page-title">
-			<div class="container">
-				<h1 ><%= yield(:title) %></h1>
-			</div>
+	<div id="page-title">
+		<div id="page-title-bg" class="container-fluid">
+			<h1 ><%= yield(:title) %></h1>
 		</div>
+	</div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				
+			<div class="col-md-12">				
 				<div class="row">
 						<% if notice %>
 						  <p class="alert alert-notice well"><%= notice %><i class='close'></i></p>
@@ -39,6 +39,7 @@
 		</div>
 
 		<div id="push"></div>
+
 	</div>
 	<div id="footer">
 		<%= render 'layouts/footer' %>
