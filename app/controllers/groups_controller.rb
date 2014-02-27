@@ -4,8 +4,8 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    
-    @groups = current_user.groups
+    @groups = current_user.groups.order(created_at: :desc).all
+    @group = current_user.groups.new
   end
 
   # GET /groups/1
