@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ExpenseTracker::Application.config.secret_key_base = '6637dc8cc6495e4596c2fa31ae46f83c049f5e2719f6b0c2da2ec4771f71e449ea11433712285824f6d76db66b9d6fc09317b6f8ff507fcc65be4064958167ee'
+ExpenseTracker::Application.config.secret_key_base = ENV['RAILS_SECRET_KEY_BASE']
