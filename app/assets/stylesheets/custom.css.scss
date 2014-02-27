@@ -1,8 +1,18 @@
+$navbar-default-toggle-border-color: #1B676B;
+$navbar-default-link-color: #1B676B;
+$navbar-default-link-hover-bg: #EAFDE6;
+$navbar-default-toggle-hover-bg: #EAFDE6;
+$navbar-default-toggle-icon-bar-bg: #1B676B;
+$navbar-default-brand-hover-bg: #EAFDE6;
+$navbar-default-link-hover-color: #1B676B;
+$navbar-default-brand-hover-color: #1B676B;
+
 @import "bootstrap";
 
 
-* {
-	font-family: 'Esteban', serif;
-	
+
+.navbar {
+	margin-bottom:0;
+	border: #519548;
 }
 

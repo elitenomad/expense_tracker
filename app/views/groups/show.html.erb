@@ -1,14 +1,5 @@
 
-<div class="container">
-<div id="page-header" class="row">
-  <div class="col-md-12">
-    
-  </div>
-  <h1>
-    <%= @group.name %>
-  </h1>
-  </div>
-</div>
+<%= content_for(:title, "#{@group.name}") %>
 
 <div class="row">
   <div class="col-md-4">
