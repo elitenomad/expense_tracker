@@ -1,7 +1,8 @@
-<h1>My Groups</h1>
-
-<h2>Your overall balance is <%= show_balance(@total_balance) %> </h2>
-
+<div class="container">
+  <div class="row">
+    <h2 class="text-muted">Your overall balance is <%= show_balance(@total_balance) %> </h2>
+  </div>
+  <br/>
 
 
 <div class="row inline_form">
@@ -15,9 +16,9 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
   <% if @groups.count > 0 %>
-    <table class="table table-hover">
+    <table class="table table-bordered table-striped table-hover">
       <tr>
         <th></th>
         <th>Group</th>
@@ -41,6 +42,7 @@
     <h4> create a group to start sharing expenses with your friends .. </h4>
   <% end %>
   </div>
+</div>
 </div>
 
 

@@ -1,17 +1,14 @@
 <div id="expense-list">
-
-
-
-	<% if @all_expenses.count > 0 %>
-		
-		<table class="table table-hover">
-		<thead>
-			<th>Description</th>
-			<th>Cost</th>
-			<th>Your Share</th>
-			<th>Group</th>
-		</thead>
-		<tbody>	
+	
+	<% if @all_expenses.count > 0 %>	
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<th>Description</th>
+				<th>Cost</th>
+				<th>Your Share</th>
+				<th>Group</th>
+			</thead>
+			<tbody>	
 				<% @all_expenses.each do |expense| %>
 					<tr data-link="<%= expense_path(expense) %>">
 						<td><%= expense.description %></td>
@@ -25,9 +22,4 @@
 	<% else %>
 			<h4>you don't have any current expense</h4>
 	<% end %>
-
-	
-
-
-
 </div>
