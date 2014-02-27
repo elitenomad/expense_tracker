@@ -19,13 +19,6 @@ class UserMailer < ActionMailer::Base
     mail(to: "#{email}", subject: 'Feedback for WDI Expense App')
   end
 
-  def group_update(params)
-
-  end
-
-  def group_settlement(params)
-
-  end
 
   def group_signin_notify(group,user)
     email = user.email
@@ -44,6 +37,14 @@ class UserMailer < ActionMailer::Base
     @user = user
     @group = group
     mail(to: "#{@user.email}", subject: 'WDI Expense App Signup Invitation')
+  end
+
+  def group_settlement_notify(user,user2,owed_balance,group)
+    @user = user
+    @user2 = user2
+    @owed_balance = owed_balance
+    @group = group
+    mail(to: "#{@user2.email}", subject: 'WDI Expense Settlement Sheet')
   end
 
 end
