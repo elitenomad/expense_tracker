@@ -88,35 +88,39 @@ body {
 
 
 footer {
-  margin-top: auto 0;
-  padding: 20px;
+  margin: 0 auto;
+  padding: 5px;
   border-top: 1px solid #eaeaea;
   color: $gray-light;
-  a {
-  		color: #555;
-  		&:hover {
-		    color: #fff;
-		  }
-	}
-  small {
-	  float: left;
-	}
+}
 
-	ul {
+
+footer a {
+  		color: #555;
+  		text-decoration: none;
+  	}
+
+footer a:hover {
+			text-decoration: none;
+			background: none;
+		  color: #1a1a1a;
+		  }
+
+footer ul {
 	  float: right;
 	  list-style: none;
-	  li {
+}
+
+footer ul li {
 		  float: left;
 		  margin-left: 10px;
 		}
-	}
-}
 
 
 /* Set the fixed height of the footer here */
 div#push,
 div#footer {
-	height: 60px;
+	height: 20px;
 }
 div#footer {
 	background-color: #f5f5f5;
@@ -127,8 +131,8 @@ div#footer {
 div#footer {
 	  margin-left: -20px;
 	  margin-right: -20px;
-	  padding-left: 20px;
-	  padding-right: 20px;
+	  padding-left: 10px;
+	  padding-right: 10px;
 	}
 }
 
@@ -137,7 +141,6 @@ div#footer {
 #contact {
 	margin-top: 50px;
 }
-
 
 div#loginbox{
 	margin-top:75px;
