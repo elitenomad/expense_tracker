@@ -24,6 +24,4 @@ closeButton.addEventListener("click",function() {
   console.log(this)
   this.parentNode.parentNode.removeChild(this.parentNode);
 });
-
-
 }

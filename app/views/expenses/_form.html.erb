@@ -2,7 +2,7 @@
   <div class="col-md-6 col-md-offset-1">
     <div class="well">
 
-      <%= form_for [@group, @expense] do |f| %>
+      <%= form_for [@group, @expense], html: {style:"form-inline"} do |f| %>
         <% if @expense.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
@@ -16,19 +16,17 @@
         <% end %>
 
         <div class="form-group">
-          <%= f.label :description %><br>
-          <%= f.text_area :description, class: "form-control", row: "3" %>
+          <%= f.text_area :description, class: "form-control",placeholder:"Description", row: "3" %>
         </div>
         <div class="form-group">
-          <%= f.label :amount %><br>
-          <%= f.number_field :amount, value: @expense.amount.to_s %>
+          <%= f.number_field :amount, class: "form-control", placeholder:"amount" , value: @expense.amount.to_s %>
         </div>
         <div class="form-group">
           <%= f.select(:user_id, @group.users.map do |user| [user.name, user.id] end, { selected: current_user.id  } , {:class => 'form-control'}) %>
         </div>
 
         <div class="actions">
-          <%= f.submit %>
+          <%= f.submit 'Add Expense', class: "btn btn-default" %>
         </div>
       <% end %>
       </div>
