@@ -1,12 +1,13 @@
-<h1>
-  
-  <%= @group.name %>
-</h1>
+<div id="page-header" class="row">
+  <div class="col-md-12"></div>
+  <h1>
+    <%= @group.name %>
+  </h1>
+  </div>
+</div>
 
 <div class="row">
-  <div class="col-md-6">
- 
-  </div>
+
   <div class="col-md-6">
     <%= link_to "Manage Group Members", groupuser_path(@group), class:'btn btn-default' %>
     <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>

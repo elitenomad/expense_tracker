@@ -14,3 +14,15 @@
 .glyphicon-chevron-right {
 	float: right;
 }
+
+#page-header {
+	background: #1B676B;
+	padding:30px;
+	color:white;
+}
+
+.container-fluid {
+	background: #BEF202;
+}
+
+
