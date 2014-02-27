@@ -1,6 +1,4 @@
 <div id="expense-list">
-
-<h3>You are currrently owed/owe $XX</h3>
 	<table class="table table-hover">
 		
 		<thead>
@@ -16,8 +14,8 @@
 				<tr data-link="<%= expense_path(expense) %>">
 					<td><%= expense.description %></td>
 					<td><%= number_to_currency(expense.amount) %></td>
-					<td>put current users portion here</td>
-					<td><%= expense.group.name %></td>
+					<td><%= number_to_currency(expense.portions.find_by_payee_id(current_user.id).amount) %></td>
+					<td><%= expense.group.name %><span class="glyphicon glyphicon-chevron-right"></span></td>
 
 				</tr>
 			<% end %>
