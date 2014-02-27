@@ -51,7 +51,7 @@
                   <% last_settlement = @settlements.where("owed_id = ?", user.id).first %>
                   <%= form_for [@group,last_settlement], style:'display:inline-block' do |f| %>
                   <%= f.hidden_field :confirm_settlement,  value: 'true' %>
-                  <button <%= last_settlement.confirm == true ? 'disabled' : "" %> type='submit' class='btn btn-default'>
+                  <button <%= last_settlement.confirm == true || last_settlement.owed != current_user ? 'disabled' : "" %> type='submit' class="btn <%= last_settlement.confirm == true ? 'btn-success' : 'btn-default' %>" >
                     Confirm
                   </button>
                   <% end %>   
