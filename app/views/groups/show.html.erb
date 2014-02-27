@@ -9,12 +9,24 @@
 <div class="row">
 
   <div class="col-md-6">
-    <%= link_to "Manage Group Members", groupuser_path(@group), class:'btn btn-default' %>
-    <%= link_to "Add Expense", new_group_expense_path(@group), class:'btn btn-default' %>
-  </div>
-</div>
 
-<%= link_to "Settle", "/groups/#{@group.id}/settlements", method: :post %>
+    <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
+      <%= f.hidden_field :do_settlement, value: 'true' %>
+        <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default'>Settle Group</button>
+    <% end %>
+  
+    <%= form_tag group_users_path(@group), method:'GET', style:'display:inline-block' do %>
+        <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>Manage Group Member</button>
+    <% end %>
+
+    <%= form_tag new_group_expense_path(@group), method:'get', style:'display:inline-block' do %>
+        <button <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
+    <% end %>
+
+ </div>
+</div>
+  
+
 
 <div class="row">
   <h3>Overview</h3>
@@ -26,6 +38,7 @@
             <th>Expenses Paid</th>
             <th>Your Share</th>
             <th>Balance</th>
+
           </tr>
           <% @user_portions_hash.each do |user,amount| %>
           <tr>
@@ -33,6 +46,17 @@
             <td><%=  number_to_currency(@user_invested_hash[user.name]) %></td>
             <td><%=  number_to_currency(@user_portion_hash[user.name]) %></td>
             <td><%=  number_to_currency(content(user,amount)) %></td>
+            <td>     
+              <% if @group.status == 'settling' && (@oweds.include? user) %>
+                  <% last_settlement = @settlements.where("owed_id = ?", user.id).first %>
+                  <%= form_for [@group,last_settlement], style:'display:inline-block' do |f| %>
+                  <%= f.hidden_field :confirm_settlement,  value: 'true' %>
+                  <button <%= last_settlement.confirm == true ? 'disabled' : "" %> type='submit' class='btn btn-default'>
+                    Confirm
+                  </button>
+                  <% end %>   
+              <% end %>
+            </td>
           </tr>
         <% end %>
     </table>
