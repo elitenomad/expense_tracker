@@ -24,7 +24,6 @@ $navbar-default-brand-hover-color: #1B676B;
 html,
 body {
 	height: 100%;
-
 	/* The html and body elements cannot have any padding or margin. */
 }
 
@@ -88,5 +87,9 @@ div#footer {
 
 #contact {
 	margin-top: 80px;
+}
+
+div#loginbox{
+	margin-top:75px;
 }
 
