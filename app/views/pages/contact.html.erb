@@ -1,1 +1,34 @@
-<h1>contact page</h1>
+<div id="contact">
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<h3>Drop me a line!</h3>
+			<hr>
+			<address>
+				<strong>Email:</strong> <a href="mailto:#"><%= current_user.email %></a><br><br>
+				<strong>Phone:</strong> +61-426806239
+			</address>
+		</div>
+
+		<div class="col-md-8 contact-form">
+			
+			<form id="contact" method="get" class="form" role="form" action="/sendemail">
+				<div class="row">
+					<div class="col-xs-6 col-md-6 form-group">
+						<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
+					</div>
+					<div class="col-xs-6 col-md-6 form-group">
+						<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+					</div>
+				</div>
+				<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
+				<br />
+				<div class="row">
+					<div class="col-xs-12 col-md-12 form-group">
+						<button class="btn btn-default pull-right" type="submit">Send mail</button>
+					</div>
+				</div>
+			</form>
+		</div>
+</div>
+</div>
