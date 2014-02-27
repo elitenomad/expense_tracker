@@ -11,33 +11,23 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4 col-md-offset-8">
-    <div >
-      <div>
+  <div class="col-md-4">
         <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
           <%= f.hidden_field :do_settlement, value: 'true' %>
             <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default'>Settle Group</button>
         <% end %>
-      </div>
-      <div>
         <%= form_tag group_users_path(@group), method:'GET', style:'display:inline-block' do %>
             <button <%= @group.status == 'open' ? "" : "disabled" %> class='btn btn-default'>Manage Group Member</button>
         <% end %>
-      </div>
-      <div>
-        <%= form_tag new_group_expense_path(@group), method:'get', style:'display:inline-block' do %>
-            <button <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
-        <% end %>
-      </div>
+    
     </div>
- </div>
 </div>
   
 
 
 <div class="row">
   <h3>Overview</h3>
-  <div class="col-md-6">
+  <div class="col-md-6 col-md-offset-1">
     <table class="table table-bordered table-striped">
           <tr>
 
@@ -53,8 +43,9 @@
             <td><%=  number_to_currency(@user_invested_hash[user.name]) %></td>
             <td><%=  number_to_currency(@user_portion_hash[user.name]) %></td>
             <td><%=  content(user,amount) %></td>
+            <% if @group.status == 'settling' %>
             <td>     
-              <% if @group.status == 'settling' && (@oweds.include? user) %>
+              <% if (@oweds.include? user) %>
                   <% last_settlement = @settlements.where("owed_id = ?", user.id).first %>
                   <%= form_for [@group,last_settlement], style:'display:inline-block' do |f| %>
                   <%= f.hidden_field :confirm_settlement,  value: 'true' %>
@@ -64,14 +55,21 @@
                   <% end %>   
               <% end %>
             </td>
+            <% end %>
           </tr>
         <% end %>
     </table>
   </div>
 </div>
 
-
-<%= render "expenses/expense" %>
+<div class="row">
+  <div>
+      <%= form_tag new_group_expense_path(@group), method:'get', style:'display:inline-block' do %>
+          <button <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
+      <% end %>
+  </div>
+  <%= render "expenses/expense" %>
+</div>
 </div>
 
 
