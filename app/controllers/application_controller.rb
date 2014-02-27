@@ -24,7 +24,7 @@ private
 	end
 
   def calculate_amount_outstanding(users,group)
-    user_portions_hash={}
+    user_portions_hash = {}
     users.each do |user|
         exp = user.expenses.current.where(group_id: group.id).sum(:amount)
         port = group.portions.current.where(payee_id: user.id).sum(:amount)
@@ -32,4 +32,6 @@ private
       end
       user_portions_hash
   end
+
+
 end
