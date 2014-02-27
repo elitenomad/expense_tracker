@@ -1,8 +1,8 @@
-
+<div class="container">
 <%= content_for(:title, "#{@group.name}") %>
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="pull-left">
         <%= form_for @group, html: {style:'display:inline-block'} do |f| %>
           <%= f.hidden_field :do_settlement, value: 'true' %>
             <button <%= (@group.status == 'open') ? "" : "disabled" %> class='btn btn-default'>Settle Group</button>
@@ -55,9 +55,11 @@
 
 <div class="row">
   <div>
-      <%= form_tag new_group_expense_path(@group), method:'get', style:'display:inline-block' do %>
-          <button <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
-      <% end %>
+       <button  id="addexpense" <%= @group.status == 'open' ? "" : "disabled" %>  class='btn btn-default'>Add Expense</button>
+  </div>
+  <p></p>
+  <div id="expense_form">
+    <%= render "expenses/form" %>
   </div>
   <%= render "expenses/expense" %>
 </div>

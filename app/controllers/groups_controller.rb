@@ -13,6 +13,7 @@ class GroupsController < ApplicationController
   def show
     @users = @group.users
     @expense_copy = Expense.new
+    @expense = Expense.new
 
     # need last set of settlement    
     @settlements = @group.settlements
@@ -54,7 +55,7 @@ class GroupsController < ApplicationController
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group
     # list in table, expense description, expense amount and link to details page
-    @expenses = @group.expenses.current
+    @expenses = @group.expenses.current.order(created_at: :desc)
   end
 
   # GET /groups/new
@@ -80,8 +81,8 @@ class GroupsController < ApplicationController
         # Added as part of activity feed
         @group.create_activity :create, owner: current_user
         
-        format.html { redirect_to @group, notice: 'Group was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @group }
+        format.html { redirect_to group_path(@group), notice: 'Group was successfully created.' }
+        format.json { render action: 'show', status: :created, location: group_path(@group) }
       else
         format.html { render action: 'new' }
         format.json { render json: @group.errors, status: :unprocessable_entity }
