@@ -11,20 +11,5 @@
  *= require_self
  *= require_tree .
  */
-.glyphicon-chevron-right {
-	float: right;
-}
-
-#page-title {
-	background-color: rgba(27,103,107, 1);
-	padding:15px;
-	color:white;
-	margin-bottom:10px;
-	margin-top:0;
-}
-
-.container-fluid {
-	background: #BEF202;
-}
 
 
