@@ -6,6 +6,10 @@ class GroupsController < ApplicationController
   def index
     @groups = current_user.groups.order(created_at: :desc).all
     @group = current_user.groups.new
+    @my_balances = {}
+    @groups.each do |group|
+      @my_balances[group] = calculate_balance(group,current_user)
+    end
   end
 
   # GET /groups/1
@@ -26,7 +30,7 @@ class GroupsController < ApplicationController
 
     # Need to create Users and loop through
     # their respective portions and create a owing amount
-    @user_portions_hash = {}
+    @user_balance_hash = {}
     @user_invested_hash = {}
     @user_portion_hash = {}
     # Calculate Owe and Owed Money
@@ -34,7 +38,7 @@ class GroupsController < ApplicationController
   
    
     #calculate owe and owed column
-    @user_portions_hash = calculate_amount_outstanding(@users, @group)
+    @user_balance_hash = calculate_amount_outstanding(@users, @group)
 
     @users.each do |user|
       expense = user.expenses.current.where(group_id: current_group_id).sum(:amount)
@@ -45,11 +49,6 @@ class GroupsController < ApplicationController
       portion = @group.portions.current.where(payee_id: user.id).sum(:amount)
       @user_portion_hash[user.name] = portion
     end
-    # @users.each do |user|
-    #   exp = user.expenses.current.where(group_id: current_group_id).sum(:amount)
-    #   port = @group.portions.current.where(payee_id: user.id).sum(:amount)
-    #   @user_portions_hash[user.name] = exp - port
-    # end
 
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group
