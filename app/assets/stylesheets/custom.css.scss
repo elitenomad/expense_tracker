@@ -35,13 +35,31 @@ $navbar-default-brand-hover-color: #1B676B;
 	border: solid 1px #5458D8;
 }
 
+.sign-up {
+	padding: 10px 80px;
+	margin:7px;
+	font-size: 20px;
+	background: #5C58B7;
+	color:white;
+	border: solid 1px #5458D8;
+}
+
 #sign-up:hover {
 	background: #5C85F8;
 }
 
-#tagline {
-	font-size:48px;
+
+.tagline {
+	margin-top:40px;
+	font-size:60px;
 	text-align:center;
+	color: #FFF200;
+	-webkit-filter: drop-shadow(-2px 3px #000);
+}
+
+#tagline-container {
+	max-width: 800px;
+	margin: 0 auto;
 }
 
 .container-landing {
@@ -187,4 +205,24 @@ div#loginbox{
 	background: #BEF202;
 }
 
+.glyphicon-star {
+	color: #FFF200;
+	font-size: 18px;
+}
+
+#landing {
+	background: url(landing.jpg) no-repeat;
+	background-size:100%;
+	height: 680px;
+}
+
+.service-item {
+	background: #BEF202;
+	height: 180px;
+	border-radius: 5px;
+}
+
+#landing-spacer {
+	height: 100px;
+}
 
