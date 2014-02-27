@@ -1,20 +1,27 @@
 <div id="expense-list">
-	<table class="table table-hover">
-		<thead>
-			<th>Description</th>
-			<th>Cost</th>
-			<th>Your Share</th>
-			<th>Group</th>
-		</thead>
-		<tbody>	
-			<% @all_expenses.each do |expense| %>
-				<tr data-link="<%= expense_path(expense) %>">
-					<td><%= expense.description %></td>
-					<td><%= number_to_currency(expense.amount) %></td>
-					<td><%= number_to_currency(expense.portions.find_by_payee_id(current_user.id).amount) %></td>
-					<td><%= expense.group.name %><span class="glyphicon glyphicon-chevron-right"></span></td>
-				</tr>
-			<% end %>
-		</tbody>
-	</table>
+
+	
+	<% if @all_expenses.count > 0 %>	
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<th>Description</th>
+				<th>Cost</th>
+				<th>Your Share</th>
+				<th>Group</th>
+			</thead>
+			<tbody>	
+				<% @all_expenses.each do |expense| %>
+					<tr data-link="<%= expense_path(expense) %>">
+						<td><%= expense.description %></td>
+						<td><%= number_to_currency(expense.amount) %></td>
+						<td><%= number_to_currency(expense.portions.find_by_payee_id(current_user.id).amount) %></td>
+						<td><%= expense.group.name %><span class="glyphicon glyphicon-chevron-right"></span></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	<% else %>
+			<h4>you don't have any current expense</h4>
+	<% end %>
+
 </div>

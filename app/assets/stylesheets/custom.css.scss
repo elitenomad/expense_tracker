@@ -1,3 +1,4 @@
+
 $navbar-default-toggle-border-color: #1B676B;
 $navbar-default-link-color: #1B676B;
 $navbar-default-link-hover-bg: #EAFDE6;
@@ -6,10 +7,17 @@ $navbar-default-toggle-icon-bar-bg: #1B676B;
 $navbar-default-link-hover-color: #1B676B;
 $navbar-default-brand-hover-color: #1B676B;
 
+<<<<<<< HEAD
+
+@import "bootstrap";
+=======
+>>>>>>> master
 
 @import "bootstrap";
 
-
+*{
+	font-family: 'Lato', sans-serif;
+}
 
 
 .navbar {
@@ -27,6 +35,7 @@ $navbar-default-brand-hover-color: #1B676B;
 	margin-left: 2px;
 	margin-right: 2px;
 }
+
 
 .container {
 	padding-left: 8px;
@@ -61,6 +70,77 @@ $navbar-default-brand-hover-color: #1B676B;
 
 	-webkit-filter: drop-shadow(-2px 3px #FFF200);
 	
+}
+
+
+/* stickey footer bootstrap */
+html,
+body {
+	height: 100%;
+
+	/* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	/* Negative indent footer by it's height */
+	margin: 0 auto -60px;
+}
+
+
+footer {
+  
+  margin: 0 auto;
+  padding: 20px;
+  border-top: 1px solid #eaeaea;
+  color: $gray-light;
+  a {
+  		color: #555;
+  		&:hover {
+		    color: #fff;
+		  }
+	}
+  small {
+	  float: left;
+	}
+
+	ul {
+	  float: right;
+	  list-style: none;
+	  li {
+		  float: left;
+		  margin-left: 10px;
+		}
+	}
+}
+
+
+/* Set the fixed height of the footer here */
+div#push,
+div#footer {
+	height: 60px;
+}
+div#footer {
+	background-color: #f5f5f5;
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+div#footer {
+	  margin-left: -20px;
+	  margin-right: -20px;
+	  padding-left: 20px;
+	  padding-right: 20px;
+	}
+}
+
+/* contact */
+
+#contact {
+	margin-top: 80px;
 }
 
 

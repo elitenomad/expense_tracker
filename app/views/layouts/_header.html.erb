@@ -1,21 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>ExpenseTracker</title>
-
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= favicon_link_tag 'favicon.jpg', rel: 'shortcut icon', type: 'image/jpg' %>
-  <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Lato:100,400" %>
-  
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<div id='wrap'>
-		<%= render 'layouts/header' %>
-
-<<<<<<< HEAD
-	<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default" role="navigation">
 	  <div class="container-fluid">
 	    <!-- Brand and toggle get grouped for better mobile display -->
 	    <div class="navbar-header">
@@ -25,7 +8,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" href="/groups">Expense Tracker</a>
+	      <a class="navbar-brand" href="#">Expense Tracker</a>
 	    </div>
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
@@ -57,49 +40,3 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
-
-	<div id="page-title">
-		<div id="page-title-bg" class="container-fluid">
-			<h1 ><%= yield(:title) %></h1>
-		</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				
-				<div class="row">
-						<% if notice %>
-						  <p class="alert alert-notice well"><%= notice %><i class='close'></i></p>
-						<% end %>
-						<% if alert %>
-						  <p class="alert alert-error well"><%= alert %><i class='close'></i></p>
-						<% end %>	
-				</div>
-			</div>
-			<div class="row">
-				<%= yield %>
-			</div>
-		</div>
-
-		<div id="push"></div>
-	</div>
-	<div id="footer">
-		<%= render 'layouts/footer' %>
-	</div>
-		
-	<script>
-		$("tr[data-link]").click(function() {
-  			window.location = $(this).data("link");
-		});
-
-		$('#addexpense').on('click',function(){
-			$('#expense_form').toggle();
-		});
-
-		$(window).load(function() {
-		  $('#expense_form').hide();
-		});
-		
-	</script>
-</body>
-</html>

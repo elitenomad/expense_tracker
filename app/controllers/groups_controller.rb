@@ -4,8 +4,14 @@ class GroupsController < ApplicationController
   # GET /groups
   # GET /groups.json
   def index
-    
-    @groups = current_user.groups
+    @groups = current_user.groups.order(created_at: :desc).all
+    @group = current_user.groups.new
+    @my_balances = {}
+    @total_balance = 0
+    @groups.each do |group|
+      @my_balances[group] = calculate_balance(group,current_user)
+      @total_balance = @total_balance + calculate_balance(group,current_user)
+    end
   end
 
   # GET /groups/1
@@ -46,11 +52,6 @@ class GroupsController < ApplicationController
       portion = @group.portions.current.where(payee_id: user.id).sum(:amount)
       @user_portion_hash[user.name] = portion
     end
-    # @users.each do |user|
-    #   exp = user.expenses.current.where(group_id: current_group_id).sum(:amount)
-    #   port = @group.portions.current.where(payee_id: user.id).sum(:amount)
-    #   @user_portions_hash[user.name] = exp - port
-    # end
 
     # below is to get all the data for the expense list partial
     # get all the expenses for the current group

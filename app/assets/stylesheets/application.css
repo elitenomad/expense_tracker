@@ -12,4 +12,24 @@
  *= require_tree .
  */
 
+i {
+  background-image: url('cssspritepro.png');
+  display: inline-block;
+}
+i.close  {
+  background-position: px px;
+  height: 16px;
+  width: 16px;
+}
+i.close:hold  {
+  background-position: px px;
+  height: 16px;
+  width: 16px;
+}
+ 
 
+.inline_form {
+  margin: 20px 0px;
+
+}
+ 

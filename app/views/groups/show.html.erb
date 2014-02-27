@@ -61,7 +61,11 @@
   <div id="expense_form">
     <%= render "expenses/form" %>
   </div>
-  <%= render "expenses/expense" %>
+  <% if @expenses.count > 0 %>
+    <%= render "expenses/expense" %>
+  <% else %>
+    <h4>Insert the first shared expense</h4>
+  <% end %>
 </div>
 </div>
 
