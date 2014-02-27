@@ -1,15 +1,16 @@
+<div id="contact">
 <div class="container">
 	<div class="row">
-		<div class="col-sm-4">
+		<div class="col-md-4">
 			<h3>Drop me a line!</h3>
 			<hr>
 			<address>
-				<strong>Email:</strong> <a href="mailto:#"> stalin.pranava@ga.co</a><br><br>
+				<strong>Email:</strong> <a href="mailto:#"><%= current_user.email %></a><br><br>
 				<strong>Phone:</strong> +61-426806239
 			</address>
 		</div>
 
-		<div class="col-sm-8 contact-form">
+		<div class="col-md-8 contact-form">
 			
 			<form id="contact" method="get" class="form" role="form" action="/sendemail">
 				<div class="row">
@@ -24,9 +25,10 @@
 				<br />
 				<div class="row">
 					<div class="col-xs-12 col-md-12 form-group">
-						<button class="btn btn-primary pull-right" type="submit">Send mail</button>
+						<button class="btn btn-default pull-right" type="submit">Send mail</button>
 					</div>
 				</div>
 			</form>
 		</div>
+</div>
 </div>

@@ -11,35 +11,40 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div id='wrap'>
+		<%= render 'layouts/header' %>
 
-	<%= render 'layouts/header' %>
+		<div id="page-title">
+			<div class="container">
+				<h1 ><%= yield(:title) %></h1>
+			</div>
+		</div>
 
-	<div id="page-title">
 		<div class="container">
-			<h1 ><%= yield(:title) %></h1>
-		</div>
-	</div>
-
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				
-				<div class="row">
-						<% if notice %>
-						  <p class="alert alert-notice well"><%= notice %></p>
-						<% end %>
-						<% if alert %>
-						  <p class="alert alert-error well"><%= alert %></p>
-						<% end %>	
+			<div class="row">
+				<div class="col-md-12">
+					
+					<div class="row">
+							<% if notice %>
+							  <p class="alert alert-notice well"><%= notice %></p>
+							<% end %>
+							<% if alert %>
+							  <p class="alert alert-error well"><%= alert %></p>
+							<% end %>	
+					</div>
 				</div>
-
-		<div class="row">
-			<%= yield %>
+			</div>
+			<div class="row">
+				<%= yield %>
+			</div>
 		</div>
-		
-		<%= render 'layouts/footer' %>
-		
+
+		<div id="push"></div>
 	</div>
+	<div id="footer">
+		<%= render 'layouts/footer' %>
+	</div>
+		
 	<script>
 		$("tr[data-link]").click(function() {
   			window.location = $(this).data("link");
