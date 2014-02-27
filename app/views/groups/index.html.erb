@@ -1,14 +1,23 @@
 <h1>My Groups</h1>
+
+<h2>Your overall balance is <%= show_balance(@total_balance) %> </h2>
+
+
+
 <div class="row">
-  <%= link_to 'Add a new Group', new_group_path, class: "btn btn-default" %>
+  <%= form_for(@group, html: {:role => 'form', :class => 'form-inline'}) do |f| %>
+      <%= f.text_field :name, :placeholder => 'new group name', :class => 'form-control' %>
+      <%= f.submit :class => "btn btn-default" %>
+  <% end %>
 </div>
+
 <div class="row">
   <div class="col-md-6">
     <table class="table table-hover">
       <tr>
         <th></th>
         <th>Group</th>
-        <th>Owner</th>
+        <th>Balance</th>
       </tr>
 
 
@@ -20,7 +29,9 @@
             <% end %>
           </td>
           <td> <%= group.name %> </td>
-          <td> <%= group.owner.name %> <span class="glyphicon glyphicon-chevron-right"></span></td>
+          <td> <%= show_balance(@my_balances[group]) %> 
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </td>
         </tr>
       <% end %>
     </table>
