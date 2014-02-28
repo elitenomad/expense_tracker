@@ -22,7 +22,7 @@ class Group < ActiveRecord::Base
     state :open, :initial => true
     state :settling
     state :closed
-
+    
     event :settle do
       after do 
         self.save
