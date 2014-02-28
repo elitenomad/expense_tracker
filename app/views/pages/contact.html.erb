@@ -4,24 +4,27 @@
 <div id="contact">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
 
-				<address>
-					<strong>Email:</strong> <a href="mailto:#"><%= current_user.email %></a><br><br>
-					<strong>Phone:</strong> +61-426806239
-				</address>
-			</div>
-
-			<div class="col-md-8 contact-form">
+			<div class="col-md-8 8 col-md-offset-4 contact-form">
 				
 				<form id="contact" method="get" class="form" role="form" action="/sendemail">
+
 					<div class="row">
-						<div class="col-xs-6 col-md-6 form-group">
-							<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
-						</div>
-						<div class="col-xs-6 col-md-6 form-group">
-							<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
-						</div>
+						<% if current_user %>
+
+							<h4> Hi <%= current_user.name %> ! leve us a message .. </h4>
+							
+							<input type="hidden" id="name" name="name" value=<%= current_user.name%> >
+							<input type="hidden" id="email" name="email" value=<%= current_user.email%> >
+
+						<% else %>
+							<div class="col-xs-6 col-md-6 form-group">
+								<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
+							</div>
+							<div class="col-xs-6 col-md-6 form-group">
+								<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+							</div>
+						<% end %>
 					</div>
 					<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
 					<br />
