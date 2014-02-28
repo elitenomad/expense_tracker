@@ -17,10 +17,9 @@
 //= require_tree .
 
 window.onload = function () { 
-	// closeButton = $('.close')[0]
+	closeButton = $('.close')[0]
 
-	// closeButton.addEventListener("click",function() {
-	//   console.log(this)
-	//   this.parentNode.parentNode.removeChild(this.parentNode);
-	// });
+	closeButton.addEventListener("click",function() {
+	  this.parentNode.parentNode.removeChild(this.parentNode);
+	});
 }
