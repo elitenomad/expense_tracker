@@ -11,8 +11,19 @@ $navbar-default-brand-hover-color: #1B676B;
 
 @import "bootstrap";
 
-*{
+
+
+* {
 	font-family: 'Lato', sans-serif;
+}
+
+.tagline {
+	font-family: 'chunkfiveroman';
+	margin-top:40px;
+	font-size:50px;
+	text-align:center;
+	color: #FFF;
+	-webkit-filter: drop-shadow(-2px 3px #000);
 }
 
 .alert-notice {
@@ -44,18 +55,17 @@ $navbar-default-brand-hover-color: #1B676B;
 	border: solid 1px #5458D8;
 }
 
-#sign-up:hover {
+#sign-up:hover  {
 	background: #5C85F8;
 }
 
-
-.tagline {
-	margin-top:40px;
-	font-size:60px;
-	text-align:center;
-	color: #FFF200;
-	-webkit-filter: drop-shadow(-2px 3px #000);
+.sign-up:hover {
+	background: #5C85F8;
+	color: #fff;	
 }
+
+
+
 
 #tagline-container {
 	max-width: 800px;
@@ -221,10 +231,19 @@ div#loginbox{
 .service-item {
 	background: #BEF202;
 	height: 180px;
-	border-radius: 5px;
+	border-radius: 10px;
+	margin: 5px;
+	padding:0 5px;
 }
 
 #landing-spacer {
 	height: 100px;
 }
+
+.service-icon {
+	margin-top: 10px;
+	font-size:60px;
+}
+
+
 
